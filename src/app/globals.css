@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 17 32;
+    --foreground: 248 250 252;
+  }
+
+  body {
+    background-color: #0a1120;
+    color: #f8fafc;
+    font-family: var(--font-plus-jakarta), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cinzel), serif;
+  }
+}
+
+/* Custom Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(10, 17, 32, 0.37);
+}
+
+/* Custom Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #a18224 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
