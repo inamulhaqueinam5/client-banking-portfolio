@@ -36,10 +36,10 @@ import { cn } from "@/lib/utils";
 
 export type SkillCategory =
   | "All"
-  | "Foreign Trade"
-  | "Regulatory Compliance & AML"
-  | "Cash & Banking Ops"
-  | "Core Systems & Tools"
+  | "Banking Operations"
+  | "Compliance & AML/CFT"
+  | "Customer Service"
+  | "Core Systems"
   | "Languages & Soft Skills";
 
 export interface SkillItem {
@@ -56,19 +56,19 @@ export interface SkillItem {
 
 const CATEGORIES: SkillCategory[] = [
   "All",
-  "Foreign Trade",
-  "Regulatory Compliance & AML",
-  "Cash & Banking Ops",
-  "Core Systems & Tools",
+  "Banking Operations",
+  "Compliance & AML/CFT",
+  "Customer Service",
+  "Core Systems",
   "Languages & Soft Skills",
 ];
 
 const SKILLS_DATA: SkillItem[] = [
-  // 1. Foreign Trade
+  // 1. Banking Operations
   {
     id: "ft-1",
     name: "L/C Scrutiny",
-    category: "Foreign Trade",
+    category: "Banking Operations",
     description:
       "Comprehensive examination of Letters of Credit (L/C) documents, shipping bills, and invoices in strict alignment with UCP 600 & ISBP standards.",
     proficiencyLabel: "Mastery",
@@ -80,7 +80,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "ft-2",
     name: "Export Bill Negotiation",
-    category: "Foreign Trade",
+    category: "Banking Operations",
     description:
       "Expert negotiation and processing of export documents, discounting foreign bills, and minimizing foreign exchange credit risks.",
     proficiencyLabel: "Expert",
@@ -90,7 +90,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "ft-3",
     name: "Foreign Exchange Settlement",
-    category: "Foreign Trade",
+    category: "Banking Operations",
     description:
       "Managing multi-currency trade settlements, foreign currency clearing, and foreign exchange compliance under Bangladesh Bank regulations.",
     proficiencyLabel: "Expert",
@@ -102,7 +102,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "ft-4",
     name: "ICCD Guidelines",
-    category: "Foreign Trade",
+    category: "Compliance & AML/CFT",
     description:
       "Direct operational adherence to International Chamber of Commerce (ICC) Banking Commission directives and trade finance frameworks.",
     proficiencyLabel: "Mastery",
@@ -113,7 +113,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "ft-5",
     name: "Trade Finance Documentation",
-    category: "Foreign Trade",
+    category: "Banking Operations",
     description:
       "Precision preparation and audit of EXP forms, Bills of Lading, Certificates of Origin, and import/export regulatory submissions.",
     proficiencyLabel: "Advanced",
@@ -121,11 +121,11 @@ const SKILLS_DATA: SkillItem[] = [
     icon: FileText,
   },
 
-  // 2. Regulatory Compliance & AML
+  // 2. Compliance & AML/CFT
   {
     id: "rc-1",
     name: "AML/CFT Screening",
-    category: "Regulatory Compliance & AML",
+    category: "Compliance & AML/CFT",
     description:
       "Rigorous Know Your Customer (KYC) verification, sanction list screening, and anti-money laundering risk classification.",
     proficiencyLabel: "Mastery",
@@ -137,7 +137,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "rc-2",
     name: "Bangladesh Bank Circular Compliance",
-    category: "Regulatory Compliance & AML",
+    category: "Compliance & AML/CFT",
     description:
       "Real-time interpretation and branch-wide enforcement of central bank monetary circulars, prudential guidelines, and policy shifts.",
     proficiencyLabel: "Mastery",
@@ -149,7 +149,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "rc-3",
     name: "CTR/STR Reporting",
-    category: "Regulatory Compliance & AML",
+    category: "Compliance & AML/CFT",
     description:
       "Systematic generation and submission of Cash Transaction Reports (CTR) and Suspicious Transaction Reports (STR) to BFIU.",
     proficiencyLabel: "Expert",
@@ -160,7 +160,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "rc-4",
     name: "Audit Preparation",
-    category: "Regulatory Compliance & AML",
+    category: "Compliance & AML/CFT",
     description:
       "Leading branch audit readiness for Bangladesh Bank inspections, internal compliance reviews, and external financial audits.",
     proficiencyLabel: "Expert",
@@ -171,7 +171,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "rc-5",
     name: "Risk Mitigation",
-    category: "Regulatory Compliance & AML",
+    category: "Compliance & AML/CFT",
     description:
       "Proactive identification of operational vulnerabilities, cash variance prevention, and enforcement of internal control systems.",
     proficiencyLabel: "Expert",
@@ -179,11 +179,11 @@ const SKILLS_DATA: SkillItem[] = [
     icon: ShieldAlert,
   },
 
-  // 3. Cash & Banking Ops
+  // 3. Banking Operations (Cash & Ops)
   {
     id: "cb-1",
     name: "Cash Management",
-    category: "Cash & Banking Ops",
+    category: "Banking Operations",
     description:
       "End-to-end administration of daily branch cash flow, vault balance limits, teller dispatch, and cash liquidity optimization.",
     proficiencyLabel: "Mastery",
@@ -194,7 +194,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cb-2",
     name: "Vault Balance Auditing",
-    category: "Cash & Banking Ops",
+    category: "Banking Operations",
     description:
       "Strict physical cash counting, joint-custody vault security protocols, reserve verification, and daily balance sheet reconciliation.",
     proficiencyLabel: "Expert",
@@ -205,7 +205,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cb-3",
     name: "High-Volume Clearing",
-    category: "Cash & Banking Ops",
+    category: "Banking Operations",
     description:
       "High-speed processing and verification of inter-bank checks, clearing house routines, and high-value financial instruments.",
     proficiencyLabel: "Advanced",
@@ -215,7 +215,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cb-4",
     name: "Transaction Verification",
-    category: "Cash & Banking Ops",
+    category: "Banking Operations",
     description:
       "Dual-signatory verification for high-value fund transfers, pay order issuance, demand drafts, and signature authentication.",
     proficiencyLabel: "Mastery",
@@ -225,7 +225,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cb-5",
     name: "Customer Service Excellence",
-    category: "Cash & Banking Ops",
+    category: "Customer Service",
     description:
       "Elevating client satisfaction through high-touch corporate account maintenance, prompt dispute resolution, and VIP service.",
     proficiencyLabel: "Mastery",
@@ -233,11 +233,11 @@ const SKILLS_DATA: SkillItem[] = [
     icon: UserCheck,
   },
 
-  // 4. Core Systems & Tools
+  // 4. Core Systems
   {
     id: "cs-1",
     name: "Core Banking Software (CBS)",
-    category: "Core Systems & Tools",
+    category: "Core Systems",
     description:
       "Expert-level operation of enterprise CBS infrastructure for customer account management, general ledgers, and day-end batch processing.",
     proficiencyLabel: "Mastery",
@@ -248,7 +248,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cs-2",
     name: "Electronic Fund Transfers (EFT)",
-    category: "Core Systems & Tools",
+    category: "Core Systems",
     description:
       "Execution and oversight of real-time electronic fund routing, electronic batch payments, and digital remittance channels.",
     proficiencyLabel: "Expert",
@@ -258,7 +258,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cs-3",
     name: "SWIFT Operations",
-    category: "Core Systems & Tools",
+    category: "Core Systems",
     description:
       "Authoring, verifying, and routing SWIFT financial messages (MT103, MT700, MT707) for international trade and remittances.",
     proficiencyLabel: "Expert",
@@ -270,7 +270,7 @@ const SKILLS_DATA: SkillItem[] = [
   {
     id: "cs-4",
     name: "Automated Clearing House (BACPS/BEFTN)",
-    category: "Core Systems & Tools",
+    category: "Core Systems",
     description:
       "Daily clearing settlement operations via Bangladesh Automated Cheque Processing System (BACPS) and Electronic Funds Transfer Network (BEFTN).",
     proficiencyLabel: "Mastery",
@@ -349,10 +349,10 @@ export const CompetencyGrid: React.FC = () => {
   const categoryCounts = useMemo(() => {
     const counts: Record<SkillCategory, number> = {
       All: SKILLS_DATA.length,
-      "Foreign Trade": 0,
-      "Regulatory Compliance & AML": 0,
-      "Cash & Banking Ops": 0,
-      "Core Systems & Tools": 0,
+      "Banking Operations": 0,
+      "Compliance & AML/CFT": 0,
+      "Customer Service": 0,
+      "Core Systems": 0,
       "Languages & Soft Skills": 0,
     };
 
@@ -438,12 +438,18 @@ export const CompetencyGrid: React.FC = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
         {/* Scrollable / Wrapping Tabs */}
         <div className="w-full overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-          <div className="inline-flex flex-nowrap md:flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-navy-surface/90 border border-slate-800/80 backdrop-blur-md min-w-full md:min-w-0">
+          <div
+            className="inline-flex flex-nowrap md:flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-navy-surface/90 border border-slate-800/80 backdrop-blur-md min-w-full md:min-w-0"
+            role="tablist"
+            aria-label="Competency categories"
+          >
             {CATEGORIES.map((category) => {
               const isActive = selectedCategory === category;
               return (
                 <button
                   key={category}
+                  role="tab"
+                  aria-selected={isActive}
                   onClick={() => setSelectedCategory(category)}
                   className={cn(
                     "relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap flex items-center gap-2 select-none",

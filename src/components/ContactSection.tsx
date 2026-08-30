@@ -49,6 +49,15 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Construct mailto link trigger
+    const mailtoSubject = encodeURIComponent(
+      formData.subject || 'Executive Banking Inquiry - Zannat Ara Nishat'
+    );
+    const mailtoBody = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:nishatzannatara@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
     // Show custom toast notification
     setToast({
       show: true,

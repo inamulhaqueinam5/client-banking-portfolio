@@ -16,6 +16,7 @@ import {
   Sparkles,
   Layers,
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export interface Milestone {
   title: string;
@@ -169,6 +170,13 @@ const CAREER_DATA: CareerRole[] = [
   },
 ];
 
+const BRANCH_OPTIONS = [
+  'All Branches',
+  'Gulshan Branch',
+  'Banani Branch',
+  'Mohakhali Branch',
+] as const;
+
 const branchBadgeStyles: Record<string, string> = {
   'Gulshan Branch': 'bg-gold-accent/15 text-gold-accent border-gold-accent/40 shadow-sm shadow-gold-accent/10',
   'Banani Branch': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
@@ -176,9 +184,14 @@ const branchBadgeStyles: Record<string, string> = {
 };
 
 export default function CareerTimeline() {
+  const [activeBranch, setActiveBranch] = useState<string>('All Branches');
   const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>({
     'feo-gulshan': true,
   });
+
+  const filteredRoles = CAREER_DATA.filter((role) =>
+    activeBranch === 'All Branches' ? true : role.branch === activeBranch
+  );
 
   const toggleRole = (id: string) => {
     setExpandedRoles((prev) => ({
@@ -187,11 +200,13 @@ export default function CareerTimeline() {
     }));
   };
 
-  const isAllExpanded = CAREER_DATA.every((role) => expandedRoles[role.id]);
+  const isAllExpanded =
+    filteredRoles.length > 0 &&
+    filteredRoles.every((role) => expandedRoles[role.id]);
 
   const toggleAll = () => {
-    const newState: Record<string, boolean> = {};
-    CAREER_DATA.forEach((role) => {
+    const newState: Record<string, boolean> = { ...expandedRoles };
+    filteredRoles.forEach((role) => {
       newState[role.id] = !isAllExpanded;
     });
     setExpandedRoles(newState);
@@ -237,7 +252,7 @@ export default function CareerTimeline() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-1 w-28 mx-auto bg-gradient-to-r from-gold-accent via-gold-light to-gold-accent rounded-full shadow-sm shadow-gold-accent/30Origin-center"
+            className="h-1 w-28 mx-auto bg-gradient-to-r from-gold-accent via-gold-light to-gold-accent rounded-full shadow-sm shadow-gold-accent/30 origin-center"
           />
 
           <motion.p
@@ -249,6 +264,37 @@ export default function CareerTimeline() {
           >
             Institutional banking leadership journey at National Bank PLC across key financial hubs in Dhaka, specializing in foreign trade settlement, cash risk mitigation, and regulatory governance.
           </motion.p>
+
+          {/* Branch Location Filter Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="flex flex-wrap items-center justify-center gap-2 pt-2"
+            role="tablist"
+            aria-label="Filter milestones by branch"
+          >
+            {BRANCH_OPTIONS.map((branch) => {
+              const isActive = activeBranch === branch;
+              return (
+                <button
+                  key={branch}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveBranch(branch)}
+                  className={cn(
+                    "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border",
+                    isActive
+                      ? "bg-gold-accent text-navy-bg border-gold-accent shadow-md shadow-gold-accent/20"
+                      : "glass-panel text-slate-300 border-slate-800 hover:text-gold-accent hover:border-gold-accent/40"
+                  )}
+                >
+                  {branch}
+                </button>
+              );
+            })}
+          </motion.div>
 
           {/* Toggle All Button */}
           <motion.div
@@ -276,7 +322,7 @@ export default function CareerTimeline() {
             aria-hidden="true"
           />
 
-          {CAREER_DATA.map((role, index) => {
+          {filteredRoles.map((role, index) => {
             const isExpanded = !!expandedRoles[role.id];
             const badgeClass = branchBadgeStyles[role.branch] || 'bg-slate-800 text-slate-300 border-slate-700';
 

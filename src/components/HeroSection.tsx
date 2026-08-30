@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
   Download,
   Mail,
+  Phone,
   Award,
   Building2,
   Briefcase,
@@ -147,6 +148,14 @@ export function HeroSection() {
           >
             <Mail className="w-4 h-4 text-gold-accent/80" />
             <span>nishatzannatara@gmail.com</span>
+          </a>
+          <span className="hidden sm:inline text-slate-600">•</span>
+          <a
+            href="tel:+8801927265191"
+            className="inline-flex items-center gap-1.5 hover:text-gold-accent transition-colors"
+          >
+            <Phone className="w-4 h-4 text-gold-accent/80" />
+            <span>+8801927265191</span>
           </a>
           <span className="hidden sm:inline text-slate-600">•</span>
           <div className="inline-flex items-center gap-1.5">
