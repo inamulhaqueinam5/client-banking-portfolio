@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,6 +10,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        sovereign: {
+          950: "#022c22",
+          900: "#064e3b",
+          800: "#065f46",
+          700: "#047857",
+          600: "#059669",
+          500: "#10b981",
+          400: "#34d399",
+          300: "#6ee7b7",
+          200: "#a7f3d0",
+          100: "#d1fae5",
+          50: "#ecfdf5",
+        },
+        alabaster: {
+          950: "#0f172a",
+          900: "#1e293b",
+          800: "#334155",
+          700: "#475569",
+          600: "#64748b",
+          500: "#94a3b8",
+          400: "#cbd5e1",
+          300: "#e2e8f0",
+          200: "#f1f5f9",
+          100: "#f8fafc",
+          50: "#ffffff",
+        },
         obsidian: {
           950: "#020408",
           900: "#040711",

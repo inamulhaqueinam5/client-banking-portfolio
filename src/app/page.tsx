@@ -29,11 +29,11 @@ export default function Home() {
       </div>
 
       {/* Surreal Frosted Glass Footer */}
-      <footer className="w-full py-8 border-t border-white/[0.08] relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-obsidian-400 font-sans">
+      <footer className="w-full py-8 border-t border-emerald-900/10 dark:border-white/[0.08] relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-obsidian-400 font-sans">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-white">Zannat Ara Nishat</span>
-            <span className="text-obsidian-600">•</span>
+            <span className="font-semibold text-emerald-950 dark:text-white">Zannat Ara Nishat</span>
+            <span className="text-slate-300 dark:text-obsidian-600">•</span>
             <span>First Executive Officer, National Bank PLC</span>
           </div>
           <div>

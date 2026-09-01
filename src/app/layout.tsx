@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -37,28 +38,52 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${cinzel.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
+      suppressHydrationWarning
     >
-      <body className="bg-obsidian-950 text-obsidian-50 min-h-screen antialiased selection:bg-amber-500/30 selection:text-amber-200 font-sans relative overflow-x-hidden">
-        {/* Impeccable Direction Contract:
-            THESIS: A surreal ethereal glass and sovereign luminescence executive banking portfolio refusing boxy slate cards, fake grid patterns, and standard SaaS monotony.
-            OWN-WORLD: Obsidian Void (#020408, #040711), Frosted Liquid Glass (backdrop-blur-2xl with specular refraction), Ethereal Champagne Gold (#f59e0b, #fbbf24), and Sovereign Emerald (#10b981).
-            STORY: Hiring managers and banking executives encounter an atmospheric, high-trust digital sanctuary showcasing 10+ years of foreign trade mastery, vault leadership, and verified central bank credentials.
-            FIRST VIEWPORT: Floating frosted glass status emblem, executive typography with radiant gold/silver contrast, instant resume acquisition, and floating crystalline metric prisms.
-            FORM: Surreal Ethereal Glass & Sovereign Luminescence. Seed key: 5872106e.
-            FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
-        */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var theme = localStorage.getItem('executive-portfolio-theme');
+                if (theme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
+                }
+              } catch (e) {
+                document.documentElement.classList.add('dark');
+              }
+            `,
+          }}
+        />
+      </head>
+      <body className="bg-slate-50 dark:bg-obsidian-950 text-slate-800 dark:text-obsidian-50 min-h-screen antialiased font-sans relative overflow-x-hidden transition-colors duration-300">
+        <ThemeProvider>
+          {/* Global Ambient Lighting Caustics - Adaptive Dark & Sovereign Emerald Light */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+            {/* Dark Mode Ambient Caustics */}
+            <div className="hidden dark:block">
+              <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] animate-aura-1" />
+              <div className="absolute top-1/3 -right-40 w-[700px] h-[700px] bg-sky-500/10 rounded-full blur-[160px] animate-aura-2" />
+              <div className="absolute bottom-10 left-1/4 w-[650px] h-[650px] bg-emerald-500/8 rounded-full blur-[150px] animate-aura-1" />
+            </div>
 
-        {/* Global Surreal Ambient Lighting Caustics */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-          <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] animate-aura-1" />
-          <div className="absolute top-1/3 -right-40 w-[700px] h-[700px] bg-sky-500/10 rounded-full blur-[160px] animate-aura-2" />
-          <div className="absolute bottom-10 left-1/4 w-[650px] h-[650px] bg-emerald-500/8 rounded-full blur-[150px] animate-aura-1" />
-        </div>
+            {/* Sovereign Emerald Light Mode Ambient Caustics */}
+            <div className="block dark:hidden">
+              <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-emerald-500/12 rounded-full blur-[140px] animate-aura-1" />
+              <div className="absolute top-1/3 -right-40 w-[700px] h-[700px] bg-teal-500/10 rounded-full blur-[160px] animate-aura-2" />
+              <div className="absolute bottom-10 left-1/4 w-[650px] h-[650px] bg-amber-500/8 rounded-full blur-[150px] animate-aura-1" />
+            </div>
+          </div>
 
-        <div className="relative z-10">
-          {children}
-        </div>
+          <div className="relative z-10">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

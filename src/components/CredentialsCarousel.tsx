@@ -218,15 +218,15 @@ export default function CredentialsCarousel() {
   const getCategoryIcon = (iconType: CredentialItem['iconType']) => {
     switch (iconType) {
       case 'award':
-        return <Award className="w-5 h-5 text-amber-400" />;
+        return <Award className="w-5 h-5 text-emerald-700 dark:text-amber-400" />;
       case 'graduation':
-        return <GraduationCap className="w-5 h-5 text-sky-400" />;
+        return <GraduationCap className="w-5 h-5 text-teal-700 dark:text-sky-400" />;
       case 'shield':
-        return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
+        return <ShieldCheck className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />;
       case 'building':
-        return <Building2 className="w-5 h-5 text-amber-400" />;
+        return <Building2 className="w-5 h-5 text-emerald-800 dark:text-amber-400" />;
       default:
-        return <BookOpen className="w-5 h-5 text-amber-400" />;
+        return <BookOpen className="w-5 h-5 text-emerald-700 dark:text-amber-400" />;
     }
   };
 
@@ -260,17 +260,17 @@ export default function CredentialsCarousel() {
   return (
     <section
       id="credentials"
-      className="w-full py-20 md:py-28 relative overflow-hidden text-obsidian-100"
+      className="w-full py-20 md:py-28 relative overflow-hidden text-slate-800 dark:text-obsidian-100"
       aria-label="Qualifications, Certifications & Governance"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Section Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-heading text-white">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-heading text-emerald-950 dark:text-white">
             Qualifications, Certifications &amp; Governance
           </h2>
 
-          <p className="text-obsidian-300 text-sm md:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-obsidian-300 text-sm md:text-base leading-relaxed">
             Formal professional banking examinations, postgraduate background, and accredited specialized risk management modules driving operational governance and compliance.
           </p>
         </div>
@@ -285,8 +285,8 @@ export default function CredentialsCarousel() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-sans transition-all duration-200 ${
                   isActive
-                    ? 'bg-amber-500 text-obsidian-950 font-bold shadow-glass-glow-gold'
-                    : 'glass-pill text-obsidian-300 hover:text-white hover:border-white/20'
+                    ? 'bg-emerald-700 text-white dark:bg-amber-500 dark:text-obsidian-950 font-bold shadow-sm dark:shadow-glass-glow-gold'
+                    : 'glass-pill text-slate-700 dark:text-obsidian-300 hover:text-emerald-950 dark:hover:text-white hover:border-emerald-300 dark:hover:border-white/20'
                 }`}
               >
                 {cat.label}
@@ -324,58 +324,58 @@ export default function CredentialsCarousel() {
                     handlePrev();
                   }
                 }}
-                className="w-full max-w-3xl glass-panel-elevated rounded-3xl p-7 md:p-9 shadow-glass-lg relative flex flex-col justify-between cursor-grab active:cursor-grabbing border border-white/[0.12]"
+                className="w-full max-w-3xl glass-panel-elevated rounded-3xl p-7 md:p-9 shadow-glass-lg relative flex flex-col justify-between cursor-grab active:cursor-grabbing border border-emerald-900/10 dark:border-white/[0.12]"
               >
                 {/* Card Top Row: Code Badge & Verification Tag */}
                 <div>
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-white/[0.08]">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-emerald-900/10 dark:border-white/[0.08]">
                     <div className="flex items-center gap-3.5">
-                      <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
+                      <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200 dark:bg-white/[0.04] dark:border-white/10 flex items-center justify-center">
                         {getCategoryIcon(currentCard.iconType)}
                       </div>
                       <div>
-                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20 uppercase tracking-wide">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/20 uppercase tracking-wide">
                           {currentCard.code}
                         </span>
-                        <span className="block text-xs text-obsidian-400 font-sans mt-0.5">
+                        <span className="block text-xs text-slate-500 dark:text-obsidian-400 font-sans mt-0.5">
                           {currentCard.type}
                         </span>
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-sans">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-300 text-xs font-sans font-medium">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                       <span>{currentCard.verificationBadge}</span>
                     </div>
                   </div>
 
                   {/* Title & Organization */}
                   <div className="space-y-2.5 mb-5">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-heading leading-tight">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-950 dark:text-white font-heading leading-tight">
                       {currentCard.title}
                     </h3>
 
-                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs sm:text-sm text-obsidian-300 font-sans">
+                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs sm:text-sm text-slate-500 dark:text-obsidian-300 font-sans">
                       <div className="flex items-center gap-1.5">
-                        <Building2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                        <span className="text-obsidian-100 font-medium">{currentCard.organization}</span>
+                        <Building2 className="w-3.5 h-3.5 text-emerald-600 dark:text-amber-400 shrink-0" />
+                        <span className="text-emerald-900 dark:text-obsidian-100 font-semibold">{currentCard.organization}</span>
                       </div>
-                      <span className="text-obsidian-600">•</span>
+                      <span className="text-slate-300 dark:text-obsidian-600">•</span>
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                        <span className="text-obsidian-300">{currentCard.completionDate}</span>
+                        <Calendar className="w-3.5 h-3.5 text-teal-600 dark:text-sky-400 shrink-0" />
+                        <span className="text-slate-600 dark:text-obsidian-300">{currentCard.completionDate}</span>
                       </div>
                     </div>
 
-                    <p className="text-obsidian-200 text-xs sm:text-sm leading-relaxed pt-1.5 font-sans">
+                    <p className="text-slate-600 dark:text-obsidian-200 text-xs sm:text-sm leading-relaxed pt-1.5 font-sans">
                       {currentCard.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Key Modules */}
-                <div className="pt-4 border-t border-white/[0.08]">
-                  <div className="text-[11px] font-sans font-medium uppercase tracking-wider text-amber-400 mb-2.5 flex items-center gap-1.5">
+                <div className="pt-4 border-t border-emerald-900/10 dark:border-white/[0.08]">
+                  <div className="text-[11px] font-sans font-bold dark:font-medium uppercase tracking-wider text-emerald-800 dark:text-amber-400 mb-2.5 flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5" />
                     <span>Key Competencies &amp; Examination Modules</span>
                   </div>
@@ -383,7 +383,7 @@ export default function CredentialsCarousel() {
                     {currentCard.keyModules.map((module, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 rounded-xl text-xs font-sans glass-pill text-obsidian-200"
+                        className="px-3 py-1 rounded-xl text-xs font-sans glass-pill text-slate-700 dark:text-obsidian-200"
                       >
                         {module}
                       </span>
@@ -401,7 +401,7 @@ export default function CredentialsCarousel() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous credential card"
-                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
+                className="w-10 h-10 rounded-full glass-panel hover:border-emerald-400 dark:hover:border-amber-500/40 text-slate-700 dark:text-obsidian-200 hover:text-emerald-900 dark:hover:text-amber-300 transition-colors flex items-center justify-center shadow-sm"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -409,7 +409,7 @@ export default function CredentialsCarousel() {
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
-                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
+                className="w-10 h-10 rounded-full glass-panel hover:border-emerald-400 dark:hover:border-amber-500/40 text-slate-700 dark:text-obsidian-200 hover:text-emerald-900 dark:hover:text-amber-300 transition-colors flex items-center justify-center shadow-sm"
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
               </button>
@@ -417,7 +417,7 @@ export default function CredentialsCarousel() {
               <button
                 onClick={handleNext}
                 aria-label="Next credential card"
-                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
+                className="w-10 h-10 rounded-full glass-panel hover:border-emerald-400 dark:hover:border-amber-500/40 text-slate-700 dark:text-obsidian-200 hover:text-emerald-900 dark:hover:text-amber-300 transition-colors flex items-center justify-center shadow-sm"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -437,8 +437,8 @@ export default function CredentialsCarousel() {
                     aria-label={`Go to slide ${idx + 1}: ${item.code}`}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       isActive
-                        ? 'w-8 bg-amber-400 shadow-[0_0_8px_#fbbf24]'
-                        : 'w-2 bg-white/10 hover:bg-white/30'
+                        ? 'w-8 bg-emerald-600 shadow-[0_0_8px_#10b981] dark:bg-amber-400 dark:shadow-[0_0_8px_#fbbf24]'
+                        : 'w-2 bg-slate-300 dark:bg-white/10 hover:bg-slate-400 dark:hover:bg-white/30'
                     }`}
                   />
                 );
@@ -446,8 +446,8 @@ export default function CredentialsCarousel() {
             </div>
 
             {/* Counter Display */}
-            <div className="text-xs font-mono text-obsidian-400 tabular-nums">
-              <span className="text-amber-400 font-bold">{currentIndex + 1}</span> / {filteredCredentials.length}
+            <div className="text-xs font-mono text-slate-500 dark:text-obsidian-400 tabular-nums">
+              <span className="text-emerald-800 dark:text-amber-400 font-bold">{currentIndex + 1}</span> / {filteredCredentials.length}
             </div>
           </div>
         </div>
