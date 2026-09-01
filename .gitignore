@@ -33,3 +33,9 @@ next-env.d.ts
 # Scratch & QA
 /.qa-snapshots/
 /.scratch/
+
+# Agent tools & cache
+.gemini/
+.claude/
+.codex/
+.agents/

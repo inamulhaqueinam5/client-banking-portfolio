@@ -32,6 +32,7 @@ export interface KeyMetric {
 export interface CareerRole {
   id: string;
   title: string;
+  department: string;
   branch: string;
   company: string;
   period: string;
@@ -45,152 +46,133 @@ export interface CareerRole {
 
 const CAREER_DATA: CareerRole[] = [
   {
-    id: 'feo-gulshan',
-    title: 'First Executive Officer',
-    branch: 'Gulshan Branch',
-    company: 'National Bank PLC',
-    period: '2021 – Present',
-    location: 'Gulshan, Dhaka',
-    isCurrent: true,
-    focusAreas: [
-      'Foreign Trade & Export Settlement',
-      'Foreign Exchange Bills Scrutiny',
-      'ICCD Regulatory Compliance',
-      'High-value Trade Documentation',
-    ],
-    overview:
-      'Leading senior foreign trade operations, managing cross-border trade settlements, foreign currency export/import bill scrutiny, and ensuring strict compliance with Bangladesh Bank & ICCD audit directives.',
-    milestones: [
-      {
-        title: 'Foreign Exchange Bills Scrutiny & Trade Settlement',
-        description:
-          'Evaluated and processed international Letters of Credit (L/C), export/import bill documentation, and foreign currency remittances with zero regulatory discrepancies.',
-        impactTag: '100% Compliance Accuracy',
-      },
-      {
-        title: 'ICCD Regulatory Compliance & BB Audit Readiness',
-        description:
-          'Spearheaded internal control and compliance (ICCD) protocols, ensuring complete adherence to Bangladesh Bank Foreign Exchange Guidelines and international trade norms.',
-        impactTag: 'Zero-Penalty Audit Rating',
-      },
-      {
-        title: 'High-Value Commercial Trade Advisory',
-        description:
-          'Provided expert guidance to major corporate clients on foreign trade financing, foreign currency risk management, and import/export regulatory clearance.',
-        impactTag: 'Executive Advisory',
-      },
-    ],
-    keyMetrics: [
-      { label: 'Trade Audit Rating', value: '100% Clean' },
-      { label: 'Compliance Level', value: 'Zero Violations' },
-      { label: 'Branch Tier', value: 'Gulshan Trade Hub' },
-    ],
-  },
-  {
-    id: 'eo-banani',
-    title: 'Executive Officer',
-    branch: 'Banani Branch',
-    company: 'National Bank PLC',
-    period: '2017 – 2021',
-    location: 'Banani, Dhaka',
-    focusAreas: [
-      'Cash Risk Mitigation & Branch Cash Operations',
-      'Vault Balance Auditing',
-      'Anti-Money Laundering (AML/CFT) Screening',
-      'CTR/STR Compliance',
-    ],
-    overview:
-      'Directed branch cash operations, daily vault balance reconciliation, and Anti-Money Laundering (AML/CFT) screening to mitigate operational risks and enforce central bank reporting standards.',
-    milestones: [
-      {
-        title: 'Vault Balance Auditing & Cash Risk Mitigation',
-        description:
-          'Managed physical vault cash limits, dual-custody verification, and inter-branch cash movement, achieving zero cash discrepancy across all internal and central bank audits.',
-        impactTag: 'Zero Cash Discrepancy',
-      },
-      {
-        title: 'AML/CFT & CTR/STR Regulatory Reporting',
-        description:
-          'Enforced mandatory Cash Transaction Reports (CTR) and Suspicious Transaction Reports (STR) screening pipelines, conducting rigorous Customer Due Diligence (CDD).',
-        impactTag: 'Full AML Compliance',
-      },
-      {
-        title: 'Branch Cash Desk Workflow Optimization',
-        description:
-          'Reengineered front-counter cash processing routines during peak hours, accelerating teller throughput while safeguarding internal security controls.',
-        impactTag: '+35% Efficiency',
-      },
-    ],
-    keyMetrics: [
-      { label: 'Vault Audit Match', value: 'Daily 100%' },
-      { label: 'AML Screening', value: 'Zero Penalties' },
-      { label: 'Branch Tier', value: 'Banani Commercial' },
-    ],
-  },
-  {
-    id: 'officer-mohakhali',
-    title: 'Officer / Junior Officer',
+    id: 'feo-export-mohakhali',
+    title: 'First Executive Officer & Export Officer (Foreign Trade)',
+    department: 'Foreign Trade & Export',
     branch: 'Mohakhali Branch',
     company: 'National Bank PLC',
-    period: '2013 – 2017',
-    location: 'Mohakhali, Dhaka',
+    period: 'Jul 2026 – Present',
+    location: 'Mohakhali Branch, Dhaka',
+    isCurrent: true,
     focusAreas: [
-      'Core Banking Operations',
-      'Account Management',
-      'Clearing & Electronic Fund Transfers',
-      'Customer Service Excellence',
+      'Export Operations and Settlement',
+      'Trade Credit & Packing Credits',
+      'Data Analysis & Decision Support',
+      'Bangladesh Bank, Head Office & ICCD Compliance',
+      'Stakeholder & Client Relations',
     ],
     overview:
-      'Built foundational banking expertise managing core banking software, electronic clearing systems (BEFTN/RTGS), retail customer account lifecycle, and deposit mobilization.',
+      'Leading foreign trade export operations at Mohakhali Branch, scrutinizing foreign exchange export bills, disbursing packing credits, analyzing trade data for strategic decisions, and ensuring strict compliance with Bangladesh Bank, Head Office, and ICCD guidelines.',
     milestones: [
       {
-        title: 'Core Banking Software & Account Management',
+        title: 'Export Operations and Settlement',
         description:
-          'Managed client account opening, KYC documentation, deposit products (FDR/DPS), and day-to-day ledger transactions on core banking systems.',
-        impactTag: 'Account Lifecycle Management',
+          'Scrutinize and negotiate foreign exchange export bills while ensuring timely realization of export proceeds in full compliance with trade procedures.',
+        impactTag: 'Timely Proceeds Realization',
       },
       {
-        title: 'Electronic Clearing & Settlement (BEFTN / RTGS)',
+        title: 'Trade Credit and Documentation',
         description:
-          'Executed high-volume Bangladesh Electronic Funds Transfer Network (BEFTN) and Real Time Gross Settlement (RTGS) transactions meeting strict daily clearing cutoffs.',
-        impactTag: '99.9% Timely Clearing',
+          'Process, calculate, and disburse packing credits, and issue necessary export related certificates to facilitate seamless exporter operations.',
+        impactTag: 'Seamless Exporter Support',
       },
       {
-        title: 'Customer Service & Executive Relationship Support',
+        title: 'Data Analysis and Decision Support',
         description:
-          'Delivered high-touch customer support to personal and commercial account holders, driving client satisfaction and supporting branch deposit mobilization.',
-        impactTag: 'High Retention',
+          'Analyze export data and resolve complex trade issues to support strategic and sensitive operational decision making.',
+        impactTag: 'Strategic Decision Support',
+      },
+      {
+        title: 'Regulatory Compliance and Reporting',
+        description:
+          'Prepare accurate export statements and maintain strict compliance with guidelines set by Bangladesh Bank, Head Office, and ICCD.',
+        impactTag: 'Strict Central Bank Adherence',
+      },
+      {
+        title: 'Stakeholder and Client Relations',
+        description:
+          'Maintain active correspondence with banks, exporters, shipping lines, and regulatory bodies while delivering exceptional customer service to branch exporters.',
+        impactTag: 'High-Touch Client Relations',
       },
     ],
     keyMetrics: [
-      { label: 'Clearing Precision', value: '99.9%' },
-      { label: 'Service Quality', value: 'Excellence Rating' },
-      { label: 'Tenure', value: '4 Years Foundation' },
+      { label: 'Trade Audit Compliance', value: '100% Clean' },
+      { label: 'Proceeds Realization', value: 'Zero Discrepancy' },
+      { label: 'Primary Focus', value: 'Foreign Trade & Export' },
+    ],
+  },
+  {
+    id: 'jo-feo-cash-dept',
+    title: 'Junior Officer to First Executive Officer (Cash Department)',
+    department: 'Cash Department',
+    branch: 'Gulshan, Banani & Mohakhali Branches',
+    company: 'National Bank PLC',
+    period: 'Oct 2015 – Jul 2026',
+    location: 'Gulshan, Banani and Mohakhali Branches, Dhaka',
+    isCurrent: false,
+    focusAreas: [
+      'Cash Department Leadership & Operations',
+      'Vault Balancing & Risk Mitigation',
+      'AML / CFT Regulatory Screening',
+      'Customer Relationship Management',
+      'Core Banking Software & Staff Mentoring',
+    ],
+    overview:
+      'Progressed over a decade across premier commercial branches (Gulshan, Banani, and Mohakhali), spearheading daily cash operations, high-volume teller transactions, vault balancing, and enforcing rigorous Anti Money Laundering (AML/CFT) standards.',
+    milestones: [
+      {
+        title: 'Expert in Cash Operations',
+        description:
+          'Spearheaded all daily functions of the Cash Department, including high volume teller transactions, vault balancing, and risk mitigation, ensuring strict accuracy and compliance.',
+        impactTag: 'Zero-Variance Vault Accuracy',
+      },
+      {
+        title: 'Compliance and Risk Mitigation',
+        description:
+          'Upheld and implemented rigorous standards for Anti Money Laundering (AML) and Combating the Financing of Terrorism (CFT), vigilantly monitoring transactions to protect the bank\'s integrity.',
+        impactTag: 'Institutional AML/CFT Protection',
+      },
+      {
+        title: 'Customer Relationship Management',
+        description:
+          'Delivered exceptional customer service by resolving complex inquiries and maintaining strict confidentiality, successfully fostering client loyalty and trust.',
+        impactTag: 'Client Loyalty & Trust',
+      },
+      {
+        title: 'Operational Proficiency',
+        description:
+          'Highly proficient in core banking software and all teller functions, adapting seamlessly to different branch environments and mentoring junior staff on best practices.',
+        impactTag: 'Core Systems & Mentorship',
+      },
+    ],
+    keyMetrics: [
+      { label: 'Career Progression', value: 'Junior Officer → FEO' },
+      { label: 'Vault Reconciliation', value: 'Daily 100% Match' },
+      { label: 'Institutional Tenure', value: '10+ Years Excellence' },
     ],
   },
 ];
 
-const BRANCH_OPTIONS = [
-  'All Branches',
-  'Gulshan Branch',
-  'Banani Branch',
-  'Mohakhali Branch',
+const FILTER_OPTIONS = [
+  'All Roles',
+  'Foreign Trade & Export',
+  'Cash Department',
 ] as const;
 
 const branchBadgeStyles: Record<string, string> = {
-  'Gulshan Branch': 'bg-gold-accent/15 text-gold-accent border-gold-accent/40 shadow-sm shadow-gold-accent/10',
-  'Banani Branch': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-  'Mohakhali Branch': 'bg-sky-500/15 text-sky-400 border-sky-500/30',
+  'Mohakhali Branch': 'bg-gold-accent/15 text-gold-accent border-gold-accent/40 shadow-sm shadow-gold-accent/10',
+  'Gulshan, Banani & Mohakhali Branches': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
 };
 
 export default function CareerTimeline() {
-  const [activeBranch, setActiveBranch] = useState<string>('All Branches');
+  const [activeFilter, setActiveFilter] = useState<string>('All Roles');
   const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>({
-    'feo-gulshan': true,
+    'feo-export-mohakhali': true,
+    'jo-feo-cash-dept': true,
   });
 
   const filteredRoles = CAREER_DATA.filter((role) =>
-    activeBranch === 'All Branches' ? true : role.branch === activeBranch
+    activeFilter === 'All Roles' ? true : role.department === activeFilter
   );
 
   const toggleRole = (id: string) => {
@@ -265,7 +247,7 @@ export default function CareerTimeline() {
             Institutional banking leadership journey at National Bank PLC across key financial hubs in Dhaka, specializing in foreign trade settlement, cash risk mitigation, and regulatory governance.
           </motion.p>
 
-          {/* Branch Location Filter Tabs */}
+          {/* Department / Role Filter Tabs */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -273,16 +255,16 @@ export default function CareerTimeline() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="flex flex-wrap items-center justify-center gap-2 pt-2"
             role="tablist"
-            aria-label="Filter milestones by branch"
+            aria-label="Filter career milestones by department"
           >
-            {BRANCH_OPTIONS.map((branch) => {
-              const isActive = activeBranch === branch;
+            {FILTER_OPTIONS.map((filter) => {
+              const isActive = activeFilter === filter;
               return (
                 <button
-                  key={branch}
+                  key={filter}
                   role="tab"
                   aria-selected={isActive}
-                  onClick={() => setActiveBranch(branch)}
+                  onClick={() => setActiveFilter(filter)}
                   className={cn(
                     "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border",
                     isActive
@@ -290,7 +272,7 @@ export default function CareerTimeline() {
                       : "glass-panel text-slate-300 border-slate-800 hover:text-gold-accent hover:border-gold-accent/40"
                   )}
                 >
-                  {branch}
+                  {filter}
                 </button>
               );
             })}
