@@ -21,10 +21,9 @@ export type { Milestone, KeyMetric, CareerRole };
 
 export default function CareerTimeline() {
   const [activeFilter, setActiveFilter] = useState<string>('All Roles');
-  const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>({
-    'feo-export-mohakhali': true,
-    'jo-feo-cash-dept': true,
-  });
+  const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>(() =>
+    getCareerTimeline().reduce((acc, role) => ({ ...acc, [role.id]: true }), {})
+  );
 
   const filterOptions = getTimelineFilters();
   const filteredRoles = getCareerTimeline({ department: activeFilter });

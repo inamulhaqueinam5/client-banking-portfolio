@@ -405,7 +405,9 @@ export default function ContactSection() {
                 {/* Direct Mailto Option */}
                 <button
                   type="button"
-                  onClick={handleCopyEmail}
+                  onClick={() => {
+                    window.location.href = `mailto:${profile.contact.email}`;
+                  }}
                   className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl glass-panel hover:border-emerald-400 dark:hover:border-amber-500/40 text-slate-700 dark:text-obsidian-200 hover:text-emerald-950 dark:hover:text-amber-300 font-semibold text-sm transition-all"
                   title="Trigger mailto: link in default email client"
                 >

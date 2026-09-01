@@ -101,8 +101,8 @@ export function HeroSection() {
         >
           {/* Primary CTA: Resume Download */}
           <a
-            href="/resume.pdf"
-            download="Zannat_Ara_Nishat_Resume.pdf"
+            href={profile.resumePdfPath}
+            download={profile.resumeDownloadFilename}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white dark:from-amber-500 dark:to-amber-600 dark:hover:from-amber-400 dark:hover:to-amber-500 dark:text-obsidian-950 font-bold transition-all duration-300 shadow-emerald-900/20 dark:shadow-glass-glow-gold hover:-translate-y-0.5 active:translate-y-0 text-base font-sans"
           >
             <Download className="w-5 h-5 shrink-0" />
@@ -118,7 +118,7 @@ export function HeroSection() {
                 e.preventDefault();
                 contactElement.scrollIntoView({ behavior: "smooth" });
               } else {
-                window.location.href = "mailto:nishatzannatara@gmail.com";
+                window.location.href = `mailto:${profile.contact.email}`;
               }
             }}
             className="w-full sm:w-auto glass-panel glass-panel-interactive inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-emerald-950 dark:text-white hover:text-emerald-700 dark:hover:text-amber-300 font-semibold dark:font-medium transition-all duration-300 text-base font-sans shadow-sm"
@@ -135,22 +135,22 @@ export function HeroSection() {
           className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1 text-xs sm:text-sm text-slate-600 dark:text-obsidian-300"
         >
           <a
-            href="mailto:nishatzannatara@gmail.com"
+            href={`mailto:${profile.contact.email}`}
             className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:text-emerald-800 dark:hover:text-amber-300 transition-colors"
           >
             <Mail className="w-3.5 h-3.5 text-emerald-600 dark:text-amber-400" />
-            <span>nishatzannatara@gmail.com</span>
+            <span>{profile.contact.email}</span>
           </a>
           <a
-            href="tel:+8801927265191"
+            href={`tel:${profile.contact.phone}`}
             className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:text-emerald-800 dark:hover:text-amber-300 transition-colors font-mono"
           >
             <Phone className="w-3.5 h-3.5 text-emerald-600 dark:text-amber-400" />
-            <span>+8801927265191</span>
+            <span>{profile.contact.phone}</span>
           </a>
           <div className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full">
             <MapPin className="w-3.5 h-3.5 text-teal-600 dark:text-sky-400" />
-            <span>Dhaka, Bangladesh</span>
+            <span>{profile.contact.location}</span>
           </div>
         </motion.div>
 

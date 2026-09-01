@@ -28,7 +28,9 @@ export function getExecutiveProfile(): ExecutiveProfile {
 /**
  * Returns career timeline roles, optionally filtered by department.
  */
-export function getCareerTimeline(options?: { department?: string }): CareerRole[] {
+export function getCareerTimeline(options?: {
+  department?: (typeof TIMELINE_FILTERS)[number] | string;
+}): CareerRole[] {
   if (!options || !options.department || options.department === 'All Roles') {
     return CAREER_ROLES;
   }
