@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Landmark, Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
+import { getExecutiveProfile } from '@/domain/content';
 
 const NAV_LINKS = [
   { label: 'Experience', href: '#career-experience' },
@@ -13,6 +14,7 @@ const NAV_LINKS = [
 ];
 
 export function FloatingNav() {
+  const profile = getExecutiveProfile();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isDark, toggleTheme, mounted } = useTheme();
@@ -57,7 +59,7 @@ export function FloatingNav() {
             <Landmark className="w-3.5 h-3.5" />
           </div>
           <span className="font-heading font-bold text-sm sm:text-base text-emerald-950 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-amber-300 transition-colors tracking-tight">
-            Z. A. Nishat
+            {profile.shortName}
           </span>
         </a>
 
@@ -97,8 +99,8 @@ export function FloatingNav() {
 
           {/* Download CV CTA */}
           <a
-            href="/resume.pdf"
-            download="Zannat_Ara_Nishat_Resume.pdf"
+            href={profile.resumePdfPath}
+            download={profile.resumeDownloadFilename}
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white dark:from-amber-500 dark:to-amber-600 dark:hover:from-amber-400 dark:hover:to-amber-500 dark:text-obsidian-950 font-bold text-xs shadow-sm dark:shadow-glass-glow-gold hover:-translate-y-0.5 active:translate-y-0 transition-all font-sans"
           >
             <Download className="w-3.5 h-3.5 shrink-0" />

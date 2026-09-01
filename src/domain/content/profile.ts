@@ -1,0 +1,90 @@
+import { ExecutiveProfile } from '../types';
+
+export const EXECUTIVE_PROFILE: ExecutiveProfile = {
+  name: 'Zannat Ara Nishat',
+  shortName: 'Z. A. Nishat',
+  title: 'Senior Banking & Foreign Trade Specialist',
+  institution: 'National Bank PLC',
+  statusBadge: {
+    text: 'Available for Executive Deployment',
+    subtext: 'National Bank PLC',
+  },
+  summary: {
+    tenureYears: '10+',
+    institution: 'National Bank PLC',
+    branches: ['Mohakhali', 'Banani', 'Gulshan'],
+    specializations: [
+      'Foreign Trade & Export L/C Settlement',
+      'Cash Risk Mitigation & Vault Balancing',
+      'Trade Finance Documentation & EXP Scrutiny',
+    ],
+    governanceFrameworks: [
+      'Bangladesh Bank Guidelines',
+      'ICCD AML/CFT Regulatory Directives',
+      'BFIU Reporting Protocols',
+    ],
+    fullText:
+      'Distinguished banking professional with over 10+ years of institutional leadership at National Bank PLC across Mohakhali, Banani, and Gulshan branches. Specialized in high-volume Foreign Trade & Export L/C Settlement, rigorous Cash Risk Mitigation, and complete adherence to Bangladesh Bank & ICCD AML/CFT governance frameworks.',
+  },
+  contact: {
+    email: 'nishatzannatara@gmail.com',
+    phone: '+8801927265191',
+    location: 'Dhaka, Bangladesh',
+  },
+  resumePdfPath: '/resume.pdf',
+  resumeDownloadFilename: 'Zannat_Ara_Nishat_Resume.pdf',
+  metrics: [
+    {
+      label: 'Banking Operations',
+      value: '10+ Years',
+      detail: 'Mohakhali • Banani • Gulshan Branches',
+      iconKey: 'trending-up',
+      badgeText: 'Verified Track Record',
+      accentGlow: 'group-hover:shadow-glass-glow-gold',
+      iconColor: 'text-emerald-700 dark:text-amber-400',
+      badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/20',
+    },
+    {
+      label: 'Banking Governance',
+      value: 'JAIBB & AIBB',
+      detail: 'Institute of Bankers Bangladesh (IBB)',
+      iconKey: 'shield-check',
+      badgeText: 'Verified Track Record',
+      accentGlow: 'group-hover:shadow-glass-glow-cyan',
+      iconColor: 'text-teal-700 dark:text-sky-400',
+      badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-sky-500/10 dark:text-sky-300 dark:border-sky-500/20',
+    },
+    {
+      label: 'Export Settlement',
+      value: 'Trade & L/C',
+      detail: 'Foreign Exchange & AML/CFT Audits',
+      iconKey: 'file-check',
+      badgeText: 'Verified Track Record',
+      accentGlow: 'group-hover:shadow-glass-glow-emerald',
+      iconColor: 'text-emerald-700 dark:text-emerald-400',
+      badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20',
+    },
+  ],
+  references: [
+    {
+      id: 'ref-regulator',
+      name: 'Former Senior Official / Executive Director',
+      role: 'Central Banking Governance',
+      organization: 'Bangladesh Bank (Central Bank of Bangladesh)',
+      categoryTag: 'Regulator',
+      categoryLabel: 'Central Banking Governance',
+      note: 'Verifiable central banking regulatory governance reference available upon request.',
+      iconKey: 'building',
+    },
+    {
+      id: 'ref-commercial',
+      name: 'Vice President / Senior Branch Manager',
+      role: 'Commercial Branch Leadership',
+      organization: 'National Bank PLC',
+      categoryTag: 'Executive',
+      categoryLabel: 'Commercial Branch Leadership',
+      note: 'Verifiable commercial bank executive branch management reference available upon request.',
+      iconKey: 'user-check',
+    },
+  ],
+};

@@ -10,9 +10,19 @@ import {
   MapPin,
   FileCheck2,
   ArrowUpRight,
+  LucideIcon,
 } from "lucide-react";
+import { getExecutiveProfile } from "@/domain/content";
+
+const METRIC_ICONS: Record<string, LucideIcon> = {
+  "trending-up": TrendingUp,
+  "shield-check": ShieldCheck,
+  "file-check": FileCheck2,
+};
 
 export function HeroSection() {
+  const profile = getExecutiveProfile();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -35,36 +45,6 @@ export function HeroSection() {
       },
     },
   };
-
-  const metrics = [
-    {
-      icon: TrendingUp,
-      value: "10+ Years",
-      label: "Banking Operations",
-      detail: "Mohakhali • Banani • Gulshan Branches",
-      accentGlow: "group-hover:shadow-glass-glow-gold",
-      iconColor: "text-emerald-700 dark:text-amber-400",
-      badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/20",
-    },
-    {
-      icon: ShieldCheck,
-      value: "JAIBB & AIBB",
-      label: "Banking Governance",
-      detail: "Institute of Bankers Bangladesh (IBB)",
-      accentGlow: "group-hover:shadow-glass-glow-cyan",
-      iconColor: "text-teal-700 dark:text-sky-400",
-      badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-sky-500/10 dark:text-sky-300 dark:border-sky-500/20",
-    },
-    {
-      icon: FileCheck2,
-      value: "Trade & L/C",
-      label: "Export Settlement",
-      detail: "Foreign Exchange & AML/CFT Audits",
-      accentGlow: "group-hover:shadow-glass-glow-emerald",
-      iconColor: "text-emerald-700 dark:text-emerald-400",
-      badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20",
-    },
-  ];
 
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 px-4 sm:px-6 lg:px-8">
@@ -179,8 +159,8 @@ export function HeroSection() {
           variants={itemVariants}
           className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-6 max-w-4xl mx-auto text-left"
         >
-          {metrics.map((item, idx) => {
-            const Icon = item.icon;
+          {profile.metrics.map((item, idx) => {
+            const Icon = (item.iconKey && METRIC_ICONS[item.iconKey]) || TrendingUp;
             return (
               <div
                 key={idx}
@@ -191,7 +171,7 @@ export function HeroSection() {
                     <Icon className={`w-5 h-5 ${item.iconColor} shrink-0`} />
                   </div>
                   <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-sans font-medium border ${item.badgeColor}`}>
-                    Verified Track Record
+                    {item.badgeText || "Verified Track Record"}
                   </span>
                 </div>
                 <div className="space-y-1.5">

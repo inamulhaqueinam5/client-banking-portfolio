@@ -41,3 +41,6 @@ next-env.d.ts
 .codex/
 .agents/
 .impeccable/live/
+
+# Local Netlify folder
+.netlify

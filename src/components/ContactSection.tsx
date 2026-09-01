@@ -18,6 +18,8 @@ import {
   Check,
 } from 'lucide-react';
 
+import { getExecutiveProfile } from '@/domain/content';
+
 interface FormData {
   name: string;
   email: string;
@@ -25,7 +27,14 @@ interface FormData {
   message: string;
 }
 
+const REFERENCE_ICONS: Record<string, React.ElementType> = {
+  building: Building2,
+  'user-check': UserCheck,
+};
+
 export default function ContactSection() {
+  const profile = getExecutiveProfile();
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -52,17 +61,17 @@ export default function ContactSection() {
     e.preventDefault();
     
     const mailtoSubject = encodeURIComponent(
-      formData.subject || 'Executive Banking Inquiry - Zannat Ara Nishat'
+      formData.subject || `Executive Banking Inquiry - ${profile.name}`
     );
     const mailtoBody = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    window.location.href = `mailto:nishatzannatara@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.location.href = `mailto:${profile.contact.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     setToast({
       show: true,
       message:
-        'Inquiry Transmitted! Direct communication channel initiated with Zannat Ara Nishat.',
+        `Inquiry Transmitted! Direct communication channel initiated with ${profile.name}.`,
     });
 
     setFormData({
@@ -81,11 +90,11 @@ export default function ContactSection() {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('nishatzannatara@gmail.com');
+      await navigator.clipboard.writeText(profile.contact.email);
       setCopied(true);
       setToast({
         show: true,
-        message: 'Official email address copied to clipboard: nishatzannatara@gmail.com',
+        message: `Official email address copied to clipboard: ${profile.contact.email}`,
       });
       setTimeout(() => setCopied(false), 3000);
       setTimeout(() => setToast((prev) => ({ ...prev, show: false })), 6000);
@@ -158,7 +167,7 @@ export default function ContactSection() {
             <div className="grid grid-cols-1 gap-3">
               {/* Email Card */}
               <a
-                href="mailto:nishatzannatara@gmail.com"
+                href={`mailto:${profile.contact.email}`}
                 className="glass-panel glass-panel-interactive p-5 rounded-2xl flex items-center gap-4 group"
               >
                 <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-white/[0.04] dark:text-amber-400 dark:border-white/10 group-hover:border-emerald-500/40 dark:group-hover:border-amber-400/40 group-hover:scale-105 transition-all shrink-0">
@@ -169,7 +178,7 @@ export default function ContactSection() {
                     Official Email
                   </p>
                   <p className="text-sm font-semibold text-emerald-950 dark:text-white truncate group-hover:text-emerald-700 dark:group-hover:text-amber-300 transition-colors">
-                    nishatzannatara@gmail.com
+                    {profile.contact.email}
                   </p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-slate-400 dark:text-obsidian-400 group-hover:text-emerald-700 dark:group-hover:text-amber-300 shrink-0 transition-colors" />
@@ -177,7 +186,7 @@ export default function ContactSection() {
 
               {/* Phone Card */}
               <a
-                href="tel:+8801927265191"
+                href={`tel:${profile.contact.phone}`}
                 className="glass-panel glass-panel-interactive p-5 rounded-2xl flex items-center gap-4 group"
               >
                 <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-white/[0.04] dark:text-amber-400 dark:border-white/10 group-hover:border-emerald-500/40 dark:group-hover:border-amber-400/40 group-hover:scale-105 transition-all shrink-0">
@@ -188,7 +197,7 @@ export default function ContactSection() {
                     Direct Phone / WhatsApp
                   </p>
                   <p className="text-sm font-semibold text-emerald-950 dark:text-white truncate group-hover:text-emerald-700 dark:group-hover:text-amber-300 transition-colors font-mono tabular-nums">
-                    +8801927265191
+                    {profile.contact.phone}
                   </p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-slate-400 dark:text-obsidian-400 group-hover:text-emerald-700 dark:group-hover:text-amber-300 shrink-0 transition-colors" />
@@ -204,7 +213,7 @@ export default function ContactSection() {
                     Operating Base
                   </p>
                   <p className="text-sm font-semibold text-emerald-950 dark:text-white">
-                    Dhaka, Bangladesh
+                    {profile.contact.location}
                   </p>
                 </div>
               </div>
@@ -218,65 +227,39 @@ export default function ContactSection() {
             </h3>
 
             <div className="space-y-3">
-              {/* Reference 1 */}
-              <div className="glass-panel p-5 rounded-2xl space-y-2.5 relative overflow-hidden">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
-                      <Building2 className="w-4 h-4" />
+              {profile.references.map((ref, idx) => {
+                const Icon = (ref.iconKey && REFERENCE_ICONS[ref.iconKey]) || Building2;
+                return (
+                  <div key={ref.id} className="glass-panel p-5 rounded-2xl space-y-2.5 relative overflow-hidden">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-emerald-950 dark:text-white font-heading">
+                            Reference {idx + 1}
+                          </h4>
+                          <p className="text-xs text-emerald-700 dark:text-emerald-400 font-sans font-semibold dark:font-medium">
+                            {ref.categoryLabel}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-sans px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-white/[0.04] dark:text-obsidian-300 dark:border-white/10 font-medium">
+                        {ref.categoryTag}
+                      </span>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-emerald-950 dark:text-white font-heading">
-                        Reference 1
-                      </h4>
-                      <p className="text-xs text-emerald-700 dark:text-emerald-400 font-sans font-semibold dark:font-medium">
-                        Central Banking Governance
+                    <div className="border-t border-emerald-900/10 dark:border-white/[0.08] pt-2.5 space-y-0.5 text-xs font-sans">
+                      <p className="font-semibold text-emerald-950 dark:text-white">
+                        {ref.name}
+                      </p>
+                      <p className="text-slate-600 dark:text-obsidian-300">
+                        {ref.organization}
                       </p>
                     </div>
                   </div>
-                  <span className="text-[11px] font-sans px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-white/[0.04] dark:text-obsidian-300 dark:border-white/10 font-medium">
-                    Regulator
-                  </span>
-                </div>
-                <div className="border-t border-emerald-900/10 dark:border-white/[0.08] pt-2.5 space-y-0.5 text-xs font-sans">
-                  <p className="font-semibold text-emerald-950 dark:text-white">
-                    Former Senior Official / Executive Director
-                  </p>
-                  <p className="text-slate-600 dark:text-obsidian-300">
-                    Bangladesh Bank (Central Bank of Bangladesh)
-                  </p>
-                </div>
-              </div>
-
-              {/* Reference 2 */}
-              <div className="glass-panel p-5 rounded-2xl space-y-2.5 relative overflow-hidden">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20">
-                      <UserCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-emerald-950 dark:text-white font-heading">
-                        Reference 2
-                      </h4>
-                      <p className="text-xs text-emerald-800 dark:text-amber-400 font-sans font-semibold dark:font-medium">
-                        Commercial Branch Leadership
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[11px] font-sans px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-white/[0.04] dark:text-obsidian-300 dark:border-white/10 font-medium">
-                    Executive
-                  </span>
-                </div>
-                <div className="border-t border-emerald-900/10 dark:border-white/[0.08] pt-2.5 space-y-0.5 text-xs font-sans">
-                  <p className="font-semibold text-emerald-950 dark:text-white">
-                    Vice President / Senior Branch Manager
-                  </p>
-                  <p className="text-slate-600 dark:text-obsidian-300">
-                    National Bank PLC
-                  </p>
-                </div>
-              </div>
+                );
+              })}
             </div>
 
             {/* Note Badge */}

@@ -17,169 +17,26 @@ import {
   Layers,
 } from 'lucide-react';
 
-export interface CredentialItem {
-  id: string;
-  code: string;
-  title: string;
-  organization: string;
-  completionDate: string;
-  category: 'all' | 'banking' | 'academic' | 'training';
-  categoryLabel: string;
-  type: string;
-  description: string;
-  keyModules: string[];
-  verificationBadge: string;
-  verifiedStatus: 'Completed' | 'Certified' | 'Acquired';
-  iconType: 'award' | 'graduation' | 'shield' | 'building';
-}
+import {
+  getCredentials,
+  getCredentialCategories,
+  CredentialCategory,
+  CredentialCategoryTab,
+  CredentialItem,
+} from '@/domain/content';
 
-export const CREDENTIALS_DATA: CredentialItem[] = [
-  {
-    id: 'jaibb',
-    code: 'JAIBB',
-    title: 'Junior Associate of the Institute of Bankers, Bangladesh',
-    organization: 'Institute of Bankers, Bangladesh (IBB)',
-    completionDate: 'Completed Dec 2022',
-    category: 'banking',
-    categoryLabel: 'Banking Examination',
-    type: 'Professional Banking Certification',
-    description: 'Foundational professional banking examination certifying comprehensive mastery in core commercial banking operations, financial accounting standards, and banking laws.',
-    keyModules: [
-      'Core Banking Operations',
-      'Banking Laws & Practices',
-      'Financial Accounting',
-      'Commercial Geography',
-      'Organization & Management'
-    ],
-    verificationBadge: 'Verified Professional Certification',
-    verifiedStatus: 'Completed',
-    iconType: 'award'
-  },
-  {
-    id: 'aibb',
-    code: 'AIBB',
-    title: 'Associate of the Institute of Bankers, Bangladesh',
-    organization: 'Institute of Bankers, Bangladesh (IBB)',
-    completionDate: 'Completed Apr 2026',
-    category: 'banking',
-    categoryLabel: 'Banking Examination',
-    type: 'Advanced Banking Diploma',
-    description: 'Advanced professional banking qualification covering international trade finance, credit management, foreign exchange compliance, and institutional risk governance.',
-    keyModules: [
-      'International Trade Finance',
-      'Foreign Exchange Operations',
-      'Credit Management & Assessment',
-      'Legal Aspects of Banking',
-      'Treasury & Capital Markets'
-    ],
-    verificationBadge: 'Verified Advanced Certification',
-    verifiedStatus: 'Completed',
-    iconType: 'award'
-  },
-  {
-    id: 'ma-english',
-    code: 'M.A. English',
-    title: 'Master of Arts (M.A.) in English',
-    organization: 'Govt. Titumir College (National University)',
-    completionDate: 'Postgraduate Degree',
-    category: 'academic',
-    categoryLabel: 'Academic Degree',
-    type: 'Academic Excellence',
-    description: 'Postgraduate degree specializing in advanced linguistics, executive discourse, corporate communication, and literary critical analysis.',
-    keyModules: [
-      'Advanced Linguistics',
-      'Executive Correspondence',
-      'Analytical Research Methodology',
-      'English Literature & Criticism',
-      'Cross-Cultural Discourse'
-    ],
-    verificationBadge: 'Verified Academic Degree',
-    verifiedStatus: 'Acquired',
-    iconType: 'graduation'
-  },
-  {
-    id: 'ba-english',
-    code: 'B.A. English',
-    title: 'Bachelor of Arts (B.A.) in English',
-    organization: 'Govt. Titumir College (National University)',
-    completionDate: 'Undergraduate Graduation',
-    category: 'academic',
-    categoryLabel: 'Academic Degree',
-    type: 'Higher Secondary & Graduation',
-    description: 'Undergraduate academic degree establishing deep competency in structured written English, critical thinking, organizational communication, and literature.',
-    keyModules: [
-      'English Language & Syntax',
-      'Structured Business Writing',
-      'Critical Analysis',
-      'World Literature',
-      'Organizational Communication'
-    ],
-    verificationBadge: 'Verified Academic Degree',
-    verifiedStatus: 'Acquired',
-    iconType: 'graduation'
-  },
-  {
-    id: 'cash-risk-training',
-    code: 'CMRM',
-    title: 'Cash Management & Operational Risk Training',
-    organization: 'National Bank Training Institute',
-    completionDate: 'Specialized Institutional Module',
-    category: 'training',
-    categoryLabel: 'Specialized Training',
-    type: 'Operational Risk Certification',
-    description: 'Intensive professional training focusing on institutional cash vault protocols, dual-control teller operations, cash reserve reconciliation, and operational risk mitigation.',
-    keyModules: [
-      'Cash Vault Security Protocols',
-      'Dual-Control Teller Management',
-      'Operational Risk Mitigation',
-      'Cash Reserve Reconciliation',
-      'Vault Security & Audit Compliance'
-    ],
-    verificationBadge: 'Institutional Certification',
-    verifiedStatus: 'Certified',
-    iconType: 'building'
-  },
-  {
-    id: 'aml-cft-seminar',
-    code: 'AML/CFT',
-    title: 'AML/CFT Prevention & Regulatory Compliance Seminar',
-    organization: 'Bangladesh Bank & NBL Training Academy',
-    completionDate: 'Regulatory Compliance Seminar',
-    category: 'training',
-    categoryLabel: 'Specialized Training',
-    type: 'Regulatory Compliance Seminar',
-    description: 'Specialized compliance seminar covering Bangladesh Bank BFIU guidelines, Suspicious Transaction Reporting (STR), Know Your Customer (KYC/CDD) policies, and anti-money laundering controls.',
-    keyModules: [
-      'Anti-Money Laundering (AML)',
-      'Combating Financing of Terrorism (CFT)',
-      'Suspicious Transaction Reporting (STR)',
-      'KYC & Customer Due Diligence (CDD)',
-      'Bangladesh Bank BFIU Directives'
-    ],
-    verificationBadge: 'Regulatory Compliance Certificate',
-    verifiedStatus: 'Certified',
-    iconType: 'shield'
-  }
-];
-
-const CATEGORIES = [
-  { id: 'all', label: 'All Credentials' },
-  { id: 'banking', label: 'Banking Exams (JAIBB / AIBB)' },
-  { id: 'academic', label: 'Academic (M.A. / B.A.)' },
-  { id: 'training', label: 'Specialized Training' },
-] as const;
+export type { CredentialItem, CredentialCategory, CredentialCategoryTab };
 
 export default function CredentialsCarousel() {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<CredentialCategory>('all');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const filteredCredentials = CREDENTIALS_DATA.filter((item) =>
-    activeCategory === 'all' ? true : item.category === activeCategory
-  );
+  const categories = getCredentialCategories();
+  const filteredCredentials = getCredentials({ category: activeCategory });
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -277,7 +134,7 @@ export default function CredentialsCarousel() {
 
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2.5">
-          {CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
               <button

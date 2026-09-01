@@ -87,3 +87,28 @@ This document defines the canonical domain language, settled decisions, agentic 
 - **Competency Matrix**: Grouped badges and interactive tags highlighting key operational skills.
 - **Certifications & Governance**: Dedicated highlight section for professional certifications and regulatory compliance expertise.
 - **Contact & Inquiry Section**: Interactive contact form with direct mailto/contact triggers.
+
+---
+
+## Domain Content Repository (`src/domain/content/`)
+
+All domain data, career timeline records, competency metrics, qualifications, and profile metadata are centralized into the pure TypeScript domain repository layer, decoupled from React presentation components:
+
+- **Canonical Types (`src/domain/types.ts`)**: `ExecutiveProfile`, `CareerRole`, `OperationalMilestone`, `CompetencyItem`, `SkillCategory`, `CredentialItem`, `CredentialCategory`, `CredentialCategoryTab`, `KeyMetric`, `ProfessionalReference`.
+- **Domain Modules**:
+  - `profile.ts`: Executive candidate profile, summary, metrics, contact info, and references.
+  - `timeline.ts`: Full career roles (`CAREER_ROLES`, `TIMELINE_FILTERS`) across National Bank PLC branches.
+  - `competencies.ts`: 24 competency items with proficiency levels, accreditation tags, and semantic icon keys.
+  - `credentials.ts`: 6 banking certifications, diplomas, academic degrees, and regulatory seminars.
+  - `index.ts`: Repository facade exporting pure query selectors.
+- **Canonical Selectors**:
+  - `getExecutiveProfile()`: Returns the complete candidate profile.
+  - `getCareerTimeline({ department? })`: Returns career roles, optionally filtered by department.
+  - `getTimelineFilters()`: Returns timeline department filter options.
+  - `getCompetencyMatrix({ category?, accreditedOnly? })`: Returns competencies matching category and accreditation filters.
+  - `getCompetencyCategories()`: Returns the category tab list.
+  - `getCompetencyCategoryCounts()`: Returns record counts per competency category.
+  - `getCredentials({ category? })`: Returns credentials filtered by category tab.
+  - `getCredentialCategories()`: Returns credential tab definitions.
+- **Automated Pure Unit Tests (`src/domain/content/__tests__/content.test.ts`)**: Fast, zero-DOM test suite executed via `npm test` (`tsx --test`).
+
