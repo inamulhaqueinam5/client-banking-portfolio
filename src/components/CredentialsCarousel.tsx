@@ -14,9 +14,7 @@ import {
   Pause,
   CheckCircle2,
   BookOpen,
-  Sparkles,
-  ExternalLink,
-  Layers
+  Layers,
 } from 'lucide-react';
 
 export interface CredentialItem {
@@ -179,12 +177,10 @@ export default function CredentialsCarousel() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Filter items based on category
   const filteredCredentials = CREDENTIALS_DATA.filter((item) =>
     activeCategory === 'all' ? true : item.category === activeCategory
   );
 
-  // Keep index in bounds when category changes
   useEffect(() => {
     setCurrentIndex(0);
   }, [activeCategory]);
@@ -199,7 +195,6 @@ export default function CredentialsCarousel() {
     setCurrentIndex((prev) => (prev - 1 + filteredCredentials.length) % filteredCredentials.length);
   }, [filteredCredentials.length]);
 
-  // Auto-play timer (5 seconds)
   useEffect(() => {
     if (!isPlaying || isHovered || filteredCredentials.length <= 1) return;
 
@@ -210,7 +205,6 @@ export default function CredentialsCarousel() {
     return () => clearInterval(timer);
   }, [isPlaying, isHovered, handleNext, filteredCredentials.length]);
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {
       handlePrev();
@@ -224,41 +218,40 @@ export default function CredentialsCarousel() {
   const getCategoryIcon = (iconType: CredentialItem['iconType']) => {
     switch (iconType) {
       case 'award':
-        return <Award className="w-5 h-5 text-gold-accent" />;
+        return <Award className="w-5 h-5 text-amber-400" />;
       case 'graduation':
-        return <GraduationCap className="w-5 h-5 text-gold-accent" />;
+        return <GraduationCap className="w-5 h-5 text-sky-400" />;
       case 'shield':
-        return <ShieldCheck className="w-5 h-5 text-gold-accent" />;
+        return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
       case 'building':
-        return <Building2 className="w-5 h-5 text-gold-accent" />;
+        return <Building2 className="w-5 h-5 text-amber-400" />;
       default:
-        return <BookOpen className="w-5 h-5 text-gold-accent" />;
+        return <BookOpen className="w-5 h-5 text-amber-400" />;
     }
   };
 
-  // Variants for Framer Motion slide transition
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 100 : -100,
+      x: dir > 0 ? 90 : -90,
       opacity: 0,
-      scale: 0.98,
+      scale: 0.96,
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring', stiffness: 300, damping: 28 },
         opacity: { duration: 0.25 },
         scale: { duration: 0.25 },
       },
     },
     exit: (dir: number) => ({
-      x: dir < 0 ? 100 : -100,
+      x: dir < 0 ? 90 : -90,
       opacity: 0,
-      scale: 0.98,
+      scale: 0.96,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring', stiffness: 300, damping: 28 },
         opacity: { duration: 0.2 },
       },
     }),
@@ -267,42 +260,33 @@ export default function CredentialsCarousel() {
   return (
     <section
       id="credentials"
-      className="w-full py-16 md:py-24 bg-navy-bg relative overflow-hidden text-slate-50"
+      className="w-full py-20 md:py-28 relative overflow-hidden text-obsidian-100"
       aria-label="Qualifications, Certifications & Governance"
     >
-      {/* Background Decorative Glow Elements */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-gold-accent/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Section Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border border-gold-accent/30 text-gold-accent text-xs md:text-sm font-semibold tracking-wider uppercase">
-            <Sparkles className="w-4 h-4 text-gold-accent" />
-            <span>Professional Credentials</span>
-          </div>
-
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-heading text-slate-50">
-            Qualifications, Certifications & Governance
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-heading text-white">
+            Qualifications, Certifications &amp; Governance
           </h2>
 
-          <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-            Formal banking examinations, postgraduate literature background, and accredited specialized risk management modules driving operational excellence and regulatory compliance.
+          <p className="text-obsidian-300 text-sm md:text-base leading-relaxed">
+            Formal professional banking examinations, postgraduate background, and accredited specialized risk management modules driving operational governance and compliance.
           </p>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-2.5">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold-accent/50 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-sans transition-all duration-200 ${
                   isActive
-                    ? 'bg-gold-accent text-navy-bg font-semibold shadow-md shadow-gold-accent/20'
-                    : 'glass-panel text-slate-300 hover:text-slate-100 hover:border-gold-accent/40'
+                    ? 'bg-amber-500 text-obsidian-950 font-bold shadow-glass-glow-gold'
+                    : 'glass-pill text-obsidian-300 hover:text-white hover:border-white/20'
                 }`}
               >
                 {cat.label}
@@ -318,10 +302,10 @@ export default function CredentialsCarousel() {
           onMouseLeave={() => setIsHovered(false)}
           onKeyDown={handleKeyDown}
           tabIndex={0}
-          className="relative outline-none focus:ring-1 focus:ring-gold-accent/30 rounded-2xl p-2 md:p-4"
+          className="relative outline-none rounded-3xl p-2"
         >
           {/* Card Container */}
-          <div className="relative min-h-[460px] sm:min-h-[420px] md:min-h-[380px] flex items-center justify-center overflow-hidden px-2 py-4">
+          <div className="relative min-h-[440px] sm:min-h-[400px] md:min-h-[360px] flex items-center justify-center overflow-hidden px-1 py-2">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentCard.id}
@@ -332,7 +316,7 @@ export default function CredentialsCarousel() {
                 exit="exit"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
+                dragElastic={0.15}
                 onDragEnd={(_, info) => {
                   if (info.offset.x < -50) {
                     handleNext();
@@ -340,65 +324,66 @@ export default function CredentialsCarousel() {
                     handlePrev();
                   }
                 }}
-                className="w-full max-w-3xl glass-panel rounded-2xl p-6 md:p-8 border border-gold-accent/25 shadow-xl shadow-black/40 relative flex flex-col justify-between cursor-grab active:cursor-grabbing"
+                className="w-full max-w-3xl glass-panel-elevated rounded-3xl p-7 md:p-9 shadow-glass-lg relative flex flex-col justify-between cursor-grab active:cursor-grabbing border border-white/[0.12]"
               >
                 {/* Card Top Row: Code Badge & Verification Tag */}
                 <div>
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-700/60">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gold-accent/10 border border-gold-accent/30 flex items-center justify-center">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-white/[0.08]">
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
                         {getCategoryIcon(currentCard.iconType)}
                       </div>
                       <div>
-                        <span className="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-gold-accent/20 text-gold-accent border border-gold-accent/30 uppercase tracking-wide">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20 uppercase tracking-wide">
                           {currentCard.code}
                         </span>
-                        <span className="block text-xs text-slate-400 font-sans mt-0.5">
+                        <span className="block text-xs text-obsidian-400 font-sans mt-0.5">
                           {currentCard.type}
                         </span>
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-gold-accent/40 text-gold-accent text-xs font-semibold shadow-inner">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-gold-accent" />
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-sans">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       <span>{currentCard.verificationBadge}</span>
                     </div>
                   </div>
 
                   {/* Title & Organization */}
-                  <div className="space-y-3 mb-5">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-50 font-heading leading-tight">
+                  <div className="space-y-2.5 mb-5">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-heading leading-tight">
                       {currentCard.title}
                     </h3>
 
-                    <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs md:text-sm text-slate-300">
+                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs sm:text-sm text-obsidian-300 font-sans">
                       <div className="flex items-center gap-1.5">
-                        <Building2 className="w-4 h-4 text-gold-accent/80 shrink-0" />
-                        <span className="font-medium text-slate-200">{currentCard.organization}</span>
+                        <Building2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                        <span className="text-obsidian-100 font-medium">{currentCard.organization}</span>
                       </div>
+                      <span className="text-obsidian-600">•</span>
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-4 h-4 text-gold-accent/80 shrink-0" />
-                        <span className="text-slate-400">{currentCard.completionDate}</span>
+                        <Calendar className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                        <span className="text-obsidian-300">{currentCard.completionDate}</span>
                       </div>
                     </div>
 
-                    <p className="text-slate-300 text-sm md:text-base leading-relaxed pt-1">
+                    <p className="text-obsidian-200 text-xs sm:text-sm leading-relaxed pt-1.5 font-sans">
                       {currentCard.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Key Modules & Acquired Skills */}
-                <div className="pt-4 border-t border-slate-700/60">
-                  <h4 className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3 flex items-center gap-2">
-                    <Layers className="w-3.5 h-3.5 text-gold-accent" />
-                    <span>Key Modules & Competencies Acquired</span>
-                  </h4>
+                {/* Key Modules */}
+                <div className="pt-4 border-t border-white/[0.08]">
+                  <div className="text-[11px] font-sans font-medium uppercase tracking-wider text-amber-400 mb-2.5 flex items-center gap-1.5">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Key Competencies &amp; Examination Modules</span>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {currentCard.keyModules.map((module, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 rounded-md text-xs font-medium bg-slate-800/90 text-slate-200 border border-slate-700/80 hover:border-gold-accent/40 transition-colors"
+                        className="px-3 py-1 rounded-xl text-xs font-sans glass-pill text-obsidian-200"
                       >
                         {module}
                       </span>
@@ -409,32 +394,32 @@ export default function CredentialsCarousel() {
             </AnimatePresence>
           </div>
 
-          {/* Carousel Controls & Auto-play Toggle */}
+          {/* Carousel Controls */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 px-2">
             {/* Prev / Next Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <button
                 onClick={handlePrev}
                 aria-label="Previous credential card"
-                className="w-10 h-10 rounded-full glass-panel hover:bg-gold-accent/20 border border-gold-accent/30 text-slate-200 hover:text-gold-accent transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gold-accent"
+                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4" />
               </button>
 
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
-                className="w-10 h-10 rounded-full glass-panel hover:bg-gold-accent/20 border border-gold-accent/30 text-slate-200 hover:text-gold-accent transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gold-accent"
+                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
               >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+                {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
               </button>
 
               <button
                 onClick={handleNext}
                 aria-label="Next credential card"
-                className="w-10 h-10 rounded-full glass-panel hover:bg-gold-accent/20 border border-gold-accent/30 text-slate-200 hover:text-gold-accent transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gold-accent"
+                className="w-10 h-10 rounded-full glass-panel hover:border-amber-500/40 text-obsidian-200 hover:text-amber-300 transition-colors flex items-center justify-center"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
@@ -450,10 +435,10 @@ export default function CredentialsCarousel() {
                       setCurrentIndex(idx);
                     }}
                     aria-label={`Go to slide ${idx + 1}: ${item.code}`}
-                    className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-gold-accent ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       isActive
-                        ? 'w-8 bg-gold-accent shadow-sm shadow-gold-accent/50'
-                        : 'w-2.5 bg-slate-600 hover:bg-slate-400'
+                        ? 'w-8 bg-amber-400 shadow-[0_0_8px_#fbbf24]'
+                        : 'w-2 bg-white/10 hover:bg-white/30'
                     }`}
                   />
                 );
@@ -461,8 +446,8 @@ export default function CredentialsCarousel() {
             </div>
 
             {/* Counter Display */}
-            <div className="text-xs font-mono text-slate-400">
-              <span className="text-gold-accent font-bold">{currentIndex + 1}</span> / {filteredCredentials.length}
+            <div className="text-xs font-mono text-obsidian-400 tabular-nums">
+              <span className="text-amber-400 font-bold">{currentIndex + 1}</span> / {filteredCredentials.length}
             </div>
           </div>
         </div>

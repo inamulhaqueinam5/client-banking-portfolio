@@ -5,10 +5,12 @@ import {
   Download,
   Mail,
   Phone,
-  Award,
-  Building2,
-  Briefcase,
+  ShieldCheck,
+  TrendingUp,
   MapPin,
+  FileCheck2,
+  Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 
 export function HeroSection() {
@@ -17,7 +19,7 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.14,
         delayChildren: 0.1,
       },
     },
@@ -29,39 +31,47 @@ export function HeroSection() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.65,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
-  const badgeItems = [
+  const metrics = [
     {
-      icon: Award,
-      title: "JAIBB & AIBB Certified",
-      subtitle: "Professional Banking Diplomas",
+      icon: TrendingUp,
+      value: "10+ Years",
+      label: "Banking Operations",
+      detail: "Mohakhali • Banani • Gulshan Branches",
+      accentGlow: "group-hover:shadow-glass-glow-gold",
+      iconColor: "text-amber-400",
+      badgeColor: "bg-amber-500/10 text-amber-300 border-amber-500/20",
     },
     {
-      icon: Briefcase,
-      title: "10+ Years Banking Excellence",
-      subtitle: "Foreign Trade & Cash Operations",
+      icon: ShieldCheck,
+      value: "JAIBB & AIBB",
+      label: "Banking Governance",
+      detail: "Institute of Bankers Bangladesh (IBB)",
+      accentGlow: "group-hover:shadow-glass-glow-cyan",
+      iconColor: "text-sky-400",
+      badgeColor: "bg-sky-500/10 text-sky-300 border-sky-500/20",
     },
     {
-      icon: Building2,
-      title: "National Bank PLC",
-      subtitle: "Mohakhali • Banani • Gulshan",
+      icon: FileCheck2,
+      value: "Trade & L/C",
+      label: "Export Settlement",
+      detail: "Foreign Exchange & AML/CFT Audits",
+      accentGlow: "group-hover:shadow-glass-glow-emerald",
+      iconColor: "text-emerald-400",
+      badgeColor: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
     },
   ];
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center items-center overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-navy-bg">
-      {/* Background Decorative Ambient Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] md:w-[650px] h-[350px] sm:h-[500px] md:h-[650px] bg-gold-accent/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-900/10 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute top-10 left-10 w-72 h-72 bg-gold-accent/5 rounded-full blur-[80px] pointer-events-none" />
-
-      {/* Background Subtle Gradient Texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/20 via-navy-bg to-navy-bg pointer-events-none" />
+    <section className="relative min-h-[92vh] flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      {/* Surreal Foreground Light Orbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] md:w-[800px] h-[380px] md:h-[480px] bg-amber-500/8 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-16 right-10 w-72 h-72 bg-sky-500/8 rounded-full blur-[110px] pointer-events-none" />
 
       <motion.div
         className="max-w-5xl w-full mx-auto text-center space-y-8 relative z-10"
@@ -69,56 +79,58 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        {/* Top Status Pill / Identity Badge */}
+        {/* Floating Frosted Glass Status Badge */}
         <motion.div variants={itemVariants} className="inline-block">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-gold-accent/30 text-gold-accent text-xs sm:text-sm font-medium tracking-wide shadow-lg shadow-gold-accent/5">
-            <Building2 className="w-4 h-4 text-gold-accent shrink-0" />
-            <span>Senior Banking Executive • National Bank PLC</span>
+          <div className="glass-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-sans tracking-wide text-obsidian-200 shadow-glass-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-luminescence shrink-0 shadow-[0_0_8px_#34d399]" />
+            <span className="text-amber-400 font-medium">Available for Executive Deployment</span>
+            <span className="text-obsidian-500">•</span>
+            <span className="text-obsidian-300">National Bank PLC</span>
           </div>
         </motion.div>
 
-        {/* Candidate Name & Title */}
-        <motion.div variants={itemVariants} className="space-y-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-50 font-heading leading-tight">
+        {/* Candidate Identity */}
+        <motion.div variants={itemVariants} className="space-y-3.5">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white font-heading leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
             Zannat Ara Nishat
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide gold-gradient-text max-w-3xl mx-auto">
-            Senior Banking & Foreign Trade Specialist
-          </h2>
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-lg sm:text-2xl md:text-3xl font-medium tracking-wide text-amber-300/90 font-heading">
+              Senior Banking &amp; Foreign Trade Specialist
+            </span>
+          </div>
         </motion.div>
 
         {/* Executive Summary */}
         <motion.div variants={itemVariants} className="max-w-3xl mx-auto">
-          <p className="text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed font-normal">
+          <p className="text-obsidian-200 text-base sm:text-lg md:text-xl leading-relaxed font-normal">
             Distinguished banking professional with over{" "}
-            <span className="text-gold-accent font-semibold">10+ years</span> of
-            institutional experience at{" "}
-            <span className="text-slate-100 font-semibold">National Bank PLC</span>{" "}
-            spanning key commercial hubs across Mohakhali, Banani, and Gulshan branches.
-            Specialized in managing complex{" "}
-            <span className="text-slate-100 font-medium">Foreign Trade</span> operations,
-            scrutinizing foreign exchange export bills, executing rigorous{" "}
-            <span className="text-slate-100 font-medium">Cash Risk Mitigation</span>, and leading institutional{" "}
-            <span className="text-slate-100 font-medium">AML/CFT Compliance</span> framework adherence.
+            <span className="text-amber-400 font-semibold">10+ years</span> of
+            institutional leadership at{" "}
+            <span className="text-white font-medium">National Bank PLC</span>{" "}
+            across Mohakhali, Banani, and Gulshan branches. Specialized in high-volume{" "}
+            <span className="text-white font-medium">Foreign Trade &amp; Export L/C Settlement</span>,
+            rigorous <span className="text-white font-medium">Cash Risk Mitigation</span>, and complete adherence to{" "}
+            <span className="text-white font-medium">Bangladesh Bank &amp; ICCD AML/CFT</span> governance frameworks.
           </p>
         </motion.div>
 
         {/* Action CTAs */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 sm:pt-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
         >
-          {/* Primary CTA */}
+          {/* Primary CTA: Resume Download */}
           <a
             href="/resume.pdf"
             download="Zannat_Ara_Nishat_Resume.pdf"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gold-accent hover:bg-gold-hover text-navy-bg font-semibold transition-all duration-300 shadow-lg shadow-gold-accent/20 hover:shadow-gold-accent/30 hover:-translate-y-0.5 active:translate-y-0 text-base"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-obsidian-950 font-bold transition-all duration-300 shadow-glass-glow-gold hover:-translate-y-0.5 active:translate-y-0 text-base font-sans"
           >
             <Download className="w-5 h-5 shrink-0" />
-            <span>Download Resume</span>
+            <span>Download Official Resume</span>
           </a>
 
-          {/* Secondary CTA */}
+          {/* Secondary CTA: Terminal Contact */}
           <a
             href="#contact"
             onClick={(e) => {
@@ -130,61 +142,68 @@ export function HeroSection() {
                 window.location.href = "mailto:nishatzannatara@gmail.com";
               }
             }}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl glass-panel hover:bg-navy-surface text-slate-100 hover:text-gold-accent border border-gold-accent/30 hover:border-gold-accent/60 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-base font-medium"
+            className="w-full sm:w-auto glass-panel glass-panel-interactive inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white hover:text-amber-300 font-medium transition-all duration-300 text-base font-sans"
           >
-            <Mail className="w-5 h-5 text-gold-accent shrink-0" />
-            <span>Get in Touch</span>
+            <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
+            <span>Initiate Direct Inquiry</span>
+            <ArrowUpRight className="w-4 h-4 text-obsidian-400 group-hover:text-amber-300" />
           </a>
         </motion.div>
 
-        {/* Quick Contact & Location Pills */}
+        {/* Quick Contact Frosted Strip */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2 text-xs sm:text-sm text-slate-400"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1 text-xs sm:text-sm text-obsidian-300"
         >
           <a
             href="mailto:nishatzannatara@gmail.com"
-            className="inline-flex items-center gap-1.5 hover:text-gold-accent transition-colors"
+            className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:text-amber-300 transition-colors"
           >
-            <Mail className="w-4 h-4 text-gold-accent/80" />
+            <Mail className="w-3.5 h-3.5 text-amber-400" />
             <span>nishatzannatara@gmail.com</span>
           </a>
-          <span className="hidden sm:inline text-slate-600">•</span>
           <a
             href="tel:+8801927265191"
-            className="inline-flex items-center gap-1.5 hover:text-gold-accent transition-colors"
+            className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:text-amber-300 transition-colors font-mono"
           >
-            <Phone className="w-4 h-4 text-gold-accent/80" />
+            <Phone className="w-3.5 h-3.5 text-amber-400" />
             <span>+8801927265191</span>
           </a>
-          <span className="hidden sm:inline text-slate-600">•</span>
-          <div className="inline-flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-gold-accent/80" />
+          <div className="glass-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full">
+            <MapPin className="w-3.5 h-3.5 text-sky-400" />
             <span>Dhaka, Bangladesh</span>
           </div>
         </motion.div>
 
-        {/* Highlights / Badges Grid */}
+        {/* Crystalline Glass Metric Cards */}
         <motion.div
           variants={itemVariants}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-6 max-w-4xl mx-auto text-left"
         >
-          {badgeItems.map((badge, idx) => {
-            const Icon = badge.icon;
+          {metrics.map((item, idx) => {
+            const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl border border-gold-accent/15 flex flex-col items-center text-center space-y-2 group"
+                className={`glass-panel glass-panel-interactive p-6 rounded-2xl group ${item.accentGlow}`}
               >
-                <div className="p-2.5 rounded-xl bg-gold-accent/10 border border-gold-accent/20 text-gold-accent group-hover:bg-gold-accent group-hover:text-navy-bg transition-colors duration-300">
-                  <Icon className="w-6 h-6 shrink-0" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <Icon className={`w-5 h-5 ${item.iconColor} shrink-0`} />
+                  </div>
+                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-sans font-medium border ${item.badgeColor}`}>
+                    Verified Track Record
+                  </span>
                 </div>
-                <div>
-                  <h3 className="text-slate-100 font-semibold text-sm sm:text-base font-sans group-hover:text-gold-accent transition-colors">
-                    {badge.title}
-                  </h3>
-                  <p className="text-slate-400 text-xs sm:text-sm font-normal mt-0.5">
-                    {badge.subtitle}
+                <div className="space-y-1.5">
+                  <div className="font-mono font-bold text-2xl sm:text-3xl text-white tabular-nums tracking-tight">
+                    {item.value}
+                  </div>
+                  <div className="text-sm font-semibold text-amber-300 font-sans">
+                    {item.label}
+                  </div>
+                  <p className="text-xs text-obsidian-300 leading-relaxed font-sans pt-0.5">
+                    {item.detail}
                   </p>
                 </div>
               </div>

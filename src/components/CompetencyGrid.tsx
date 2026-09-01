@@ -27,7 +27,6 @@ import {
   Users,
   Lightbulb,
   BadgeCheck,
-  Sparkles,
   Award,
   Filter,
   LucideIcon,
@@ -48,7 +47,7 @@ export interface SkillItem {
   category: Exclude<SkillCategory, "All">;
   description: string;
   proficiencyLabel: "Mastery" | "Expert" | "Advanced" | "Professional" | "Native";
-  proficiencyLevel: number; // 0 to 100
+  proficiencyLevel: number;
   icon: LucideIcon;
   certification?: "Bangladesh Bank Compliance" | "JAIBB" | "AIBB" | "ICCD Guidelines";
   keyHighlight?: boolean;
@@ -67,7 +66,7 @@ const SKILLS_DATA: SkillItem[] = [
   // 1. Banking Operations
   {
     id: "ft-1",
-    name: "L/C Scrutiny",
+    name: "L/C Scrutiny & Settlement",
     category: "Banking Operations",
     description:
       "Comprehensive examination of Letters of Credit (L/C) documents, shipping bills, and invoices in strict alignment with UCP 600 & ISBP standards.",
@@ -269,7 +268,7 @@ const SKILLS_DATA: SkillItem[] = [
   },
   {
     id: "cs-4",
-    name: "Automated Clearing House (BACPS/BEFTN)",
+    name: "Automated Clearing (BACPS/BEFTN)",
     category: "Core Systems",
     description:
       "Daily clearing settlement operations via Bangladesh Automated Cheque Processing System (BACPS) and Electronic Funds Transfer Network (BEFTN).",
@@ -282,7 +281,7 @@ const SKILLS_DATA: SkillItem[] = [
   // 5. Languages & Soft Skills
   {
     id: "ls-1",
-    name: "English Fluency (Native/Professional)",
+    name: "English Fluency (Professional)",
     category: "Languages & Soft Skills",
     description:
       "Professional business English articulation for international trade correspondences, executive reporting, and cross-border transactions.",
@@ -366,68 +365,59 @@ export const CompetencyGrid: React.FC = () => {
   return (
     <section
       id="competencies"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10"
+      className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10"
     >
-      {/* Background Subtle Accent Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-accent/5 rounded-full blur-3xl pointer-events-none -z-10" />
-
       {/* Header Section */}
       <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-accent/10 border border-gold-accent/30 text-gold-accent text-xs sm:text-sm font-semibold tracking-wider uppercase">
-          <Sparkles className="w-4 h-4 text-gold-accent" />
-          <span>Professional Expertise</span>
-        </div>
-
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-slate-50 tracking-tight">
-          Core Competency & Skill Matrix
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight">
+          Core Competency &amp; Skill Matrix
         </h2>
 
-        <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed">
-          Categorized operational breakdown spanning Foreign Trade, Regulatory Compliance,
-          Cash Operations, and Core Banking Technologies developed over 10+ years at
-          National Bank PLC.
+        <p className="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+          Comprehensive operational breakdown across Foreign Trade, Regulatory Compliance,
+          Cash Operations, and Core Banking Technologies cultivated over 10+ years at National Bank PLC.
         </p>
       </div>
 
-      {/* Regulatory Certification Highlight Cards Banner */}
+      {/* Regulatory Certification Highlight Cards */}
       <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl glass-panel border border-gold-accent/25 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gold-accent/15 border border-gold-accent/30 flex items-center justify-center text-gold-accent shrink-0">
+        <div className="p-4 rounded-2xl glass-panel glass-panel-interactive flex items-center gap-3.5 shadow-glass-sm">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-gold-accent uppercase tracking-wider">
+            <div className="text-[11px] font-sans font-medium text-emerald-400 uppercase tracking-wider">
               Central Bank Directive
             </div>
-            <div className="text-sm font-bold text-slate-100">
+            <div className="text-sm font-semibold text-white">
               Bangladesh Bank Compliance
             </div>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl glass-panel border border-gold-accent/25 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gold-accent/15 border border-gold-accent/30 flex items-center justify-center text-gold-accent shrink-0">
+        <div className="p-4 rounded-2xl glass-panel glass-panel-interactive flex items-center gap-3.5 shadow-glass-sm">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-gold-accent uppercase tracking-wider">
+            <div className="text-[11px] font-sans font-medium text-amber-400 uppercase tracking-wider">
               Banking Diploma
             </div>
-            <div className="text-sm font-bold text-slate-100">
+            <div className="text-sm font-semibold text-white">
               JAIBB Certified Specialist
             </div>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl glass-panel border border-gold-accent/25 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gold-accent/15 border border-gold-accent/30 flex items-center justify-center text-gold-accent shrink-0">
+        <div className="p-4 rounded-2xl glass-panel glass-panel-interactive flex items-center gap-3.5 shadow-glass-sm">
+          <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
             <BadgeCheck className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-gold-accent uppercase tracking-wider">
+            <div className="text-[11px] font-sans font-medium text-sky-400 uppercase tracking-wider">
               Advanced Diploma
             </div>
-            <div className="text-sm font-bold text-slate-100">
+            <div className="text-sm font-semibold text-white">
               AIBB Certified Executive
             </div>
           </div>
@@ -435,11 +425,10 @@ export const CompetencyGrid: React.FC = () => {
       </div>
 
       {/* Category Filter Controls */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-        {/* Scrollable / Wrapping Tabs */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-3.5 mb-8">
         <div className="w-full overflow-x-auto pb-2 md:pb-0 scrollbar-none">
           <div
-            className="inline-flex flex-nowrap md:flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-navy-surface/90 border border-slate-800/80 backdrop-blur-md min-w-full md:min-w-0"
+            className="inline-flex flex-nowrap md:flex-wrap items-center gap-2 p-1.5 rounded-2xl glass-panel min-w-full md:min-w-0"
             role="tablist"
             aria-label="Competency categories"
           >
@@ -452,26 +441,19 @@ export const CompetencyGrid: React.FC = () => {
                   aria-selected={isActive}
                   onClick={() => setSelectedCategory(category)}
                   className={cn(
-                    "relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap flex items-center gap-2 select-none",
+                    "px-4 py-2 rounded-xl text-xs sm:text-sm font-sans transition-all duration-200 whitespace-nowrap flex items-center gap-2 select-none",
                     isActive
-                      ? "text-navy-bg font-semibold"
-                      : "text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
+                      ? "bg-amber-500 text-obsidian-950 font-bold shadow-glass-glow-gold"
+                      : "text-obsidian-300 hover:text-white hover:bg-white/[0.04]"
                   )}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeCategoryTab"
-                      className="absolute inset-0 bg-gold-accent rounded-xl shadow-lg shadow-gold-accent/20"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{category}</span>
+                  <span>{category}</span>
                   <span
                     className={cn(
-                      "relative z-10 px-1.5 py-0.5 rounded-full text-[10px] font-bold transition-colors",
+                      "px-1.5 py-0.5 rounded-md text-[10px] font-bold",
                       isActive
-                        ? "bg-navy-bg/20 text-navy-bg"
-                        : "bg-slate-800 text-slate-400"
+                        ? "bg-obsidian-950/20 text-obsidian-950"
+                        : "bg-white/[0.06] text-obsidian-400"
                     )}
                   >
                     {categoryCounts[category]}
@@ -482,26 +464,26 @@ export const CompetencyGrid: React.FC = () => {
           </div>
         </div>
 
-        {/* Optional Certification Toggle Button */}
+        {/* Certification Only Filter Toggle */}
         <button
           onClick={() => setShowOnlyCertified(!showOnlyCertified)}
           className={cn(
-            "w-full md:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium border transition-all duration-200",
+            "w-full md:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-sans transition-all duration-200",
             showOnlyCertified
-              ? "bg-gold-accent/20 border-gold-accent text-gold-accent font-semibold"
-              : "glass-panel border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+              ? "bg-amber-500 text-obsidian-950 font-bold shadow-glass-glow-gold"
+              : "glass-pill text-obsidian-300 hover:text-white"
           )}
         >
-          <Filter className="w-4 h-4" />
-          <span>Certifications Only</span>
+          <Filter className="w-3.5 h-3.5 text-amber-400" />
+          <span>Accreditations Only</span>
           {showOnlyCertified && (
-            <span className="w-2 h-2 rounded-full bg-gold-accent animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-obsidian-950 animate-luminescence" />
           )}
         </button>
       </div>
 
       {/* Grid of Skill Cards */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <AnimatePresence mode="popLayout">
           {filteredSkills.map((skill) => {
             const IconComponent = skill.icon;
@@ -509,75 +491,67 @@ export const CompetencyGrid: React.FC = () => {
               <motion.div
                 key={skill.id}
                 layout
-                initial={{ opacity: 0, scale: 0.92, y: 15 }}
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: -15 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
+                exit={{ opacity: 0, scale: 0.96, y: -12 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                  "group relative rounded-xl glass-panel p-6 flex flex-col justify-between overflow-hidden border transition-all duration-300",
+                  "glass-panel glass-panel-interactive group rounded-2xl p-6 flex flex-col justify-between overflow-hidden shadow-glass-sm",
                   skill.keyHighlight
-                    ? "border-gold-accent/40 hover:border-gold-accent"
-                    : "border-slate-800/80 hover:border-gold-accent/30"
+                    ? "border-amber-500/30"
+                    : "border-white/[0.08]"
                 )}
               >
-                {/* Background Subtle Gradient for Highlighted Cards */}
-                {skill.keyHighlight && (
-                  <div className="absolute top-0 right-0 w-28 h-28 bg-gold-accent/5 rounded-full blur-2xl pointer-events-none" />
-                )}
-
                 <div>
                   {/* Top Row: Icon & Certification Badge */}
                   <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gold-accent/10 border border-gold-accent/25 flex items-center justify-center text-gold-accent group-hover:bg-gold-accent group-hover:text-navy-bg transition-colors duration-300 shrink-0">
-                      <IconComponent className="w-6 h-6" />
+                    <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-amber-400 group-hover:border-amber-400/40 group-hover:scale-105 transition-all duration-300 shrink-0">
+                      <IconComponent className="w-5 h-5" />
                     </div>
 
                     {skill.certification && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gold-accent/15 text-gold-accent border border-gold-accent/30">
-                        <ShieldCheck className="w-3.5 h-3.5" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-sans font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                        <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
                         <span>{skill.certification}</span>
                       </span>
                     )}
                   </div>
 
                   {/* Skill Title */}
-                  <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-100 group-hover:text-gold-accent transition-colors duration-200">
+                  <h3 className="text-lg font-bold font-heading text-white group-hover:text-amber-300 transition-colors">
                     {skill.name}
                   </h3>
 
-                  {/* Category Pill Tag */}
+                  {/* Category Indicator */}
                   <div className="mt-1 mb-3">
-                    <span className="text-[11px] font-medium text-slate-400 tracking-wide uppercase">
+                    <span className="text-[11px] font-sans text-obsidian-400 font-medium">
                       {skill.category}
                     </span>
                   </div>
 
                   {/* Description */}
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                  <p className="text-obsidian-300 text-xs sm:text-sm leading-relaxed mb-5 font-sans">
                     {skill.description}
                   </p>
                 </div>
 
-                {/* Card Footer: Proficiency Bar & Percentage Indicator */}
-                <div className="pt-4 border-t border-slate-800/60 mt-auto">
+                {/* Card Footer: Executive Mastery Tier & Proficiency */}
+                <div className="pt-3.5 border-t border-white/[0.08] mt-auto">
                   <div className="flex items-center justify-between text-xs mb-2">
-                    <span className="text-slate-400 font-medium">
-                      Proficiency:{" "}
-                      <span className="text-slate-200 font-semibold">
-                        {skill.proficiencyLabel}
-                      </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-sans px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-medium">
+                      {skill.proficiencyLabel}
                     </span>
-                    <span className="font-bold text-gold-accent">
+                    <span className="font-mono font-bold text-amber-400 tabular-nums text-xs">
                       {skill.proficiencyLevel}%
                     </span>
                   </div>
 
-                  <div className="w-full h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-obsidian-950/80 rounded-full overflow-hidden border border-white/[0.05]">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${skill.proficiencyLevel}%` }}
-                      transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-gold-muted via-gold-accent to-gold-light rounded-full"
+                      transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.4)]"
                     />
                   </div>
                 </div>
@@ -589,27 +563,22 @@ export const CompetencyGrid: React.FC = () => {
 
       {/* Empty State Fallback */}
       {filteredSkills.length === 0 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-16 px-4 rounded-2xl glass-panel border border-slate-800"
-        >
-          <Filter className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-          <h4 className="text-lg font-bold text-slate-200 mb-1">No Skills Found</h4>
-          <p className="text-slate-400 text-sm max-w-md mx-auto">
-            No competencies match your current filter settings. Try toggling off
-            &quot;Certifications Only&quot; or selecting a different category.
+        <div className="text-center py-14 px-6 rounded-2xl glass-panel">
+          <Filter className="w-8 h-8 text-obsidian-400 mx-auto mb-3" />
+          <h4 className="text-lg font-bold text-white mb-1 font-heading">No Competencies Found</h4>
+          <p className="text-obsidian-300 text-xs max-w-md mx-auto mb-4">
+            No competencies match your current filter settings. Try resetting the category or accreditation filter.
           </p>
           <button
             onClick={() => {
               setSelectedCategory("All");
               setShowOnlyCertified(false);
             }}
-            className="mt-4 px-4 py-2 rounded-xl bg-gold-accent text-navy-bg font-semibold text-sm hover:bg-gold-hover transition-colors"
+            className="px-4 py-2 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs hover:bg-amber-400 transition-colors shadow-glass-glow-gold"
           >
             Reset Filters
           </button>
-        </motion.div>
+        </div>
       )}
     </section>
   );
