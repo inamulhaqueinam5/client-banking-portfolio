@@ -40,7 +40,10 @@ next-env.d.ts
 .claude/
 .codex/
 .agents/
-.impeccable/live/
+.impeccable/
+
+# Duplicate root binary
+/resume.pdf
 
 # Local Netlify folder
 .netlify
